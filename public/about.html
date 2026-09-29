@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latif — About Us</title>
+<meta name="description" content="Latif is an independent digital studio crafting meaningful brand experiences through strategy, design and technology.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --paper:#f5f3ee;
+  --ink:#090909;
+  --muted:#66635d;
+  --line:#1a1a1a;
+  --white:#fff;
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+
+.page{width:min(1440px,100%);margin:auto;padding:18px 22px 0}
+.site-nav{max-width:1440px;height:58px;margin:0 auto 22px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+.site-nav .logo{font-size:29px;font-weight:700;letter-spacing:-1.8px;line-height:.9}
+.site-nav .logo small{display:block;font-size:9px;font-weight:500;letter-spacing:3px;margin-top:7px;color:#777}
+.navlinks{display:flex;align-items:center;gap:38px;padding:17px 42px;border:1px solid #d8d8d5;border-radius:28px;font-size:14px;background:rgba(255,255,255,.65);backdrop-filter:blur(8px)}
+.navlinks a{color:#555;transition:.2s}.navlinks a:hover,.navlinks a.active{color:#000;font-weight:600}
+.navright{display:flex;justify-content:flex-end;align-items:center;gap:28px}
+.navright .dots{font-size:22px;letter-spacing:4px;color:#111}
+.contact-btn{background:#090909;color:#fff;border-radius:17px;padding:17px 26px;display:flex;gap:28px;font-size:14px}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:42% 58%;
+  gap:28px;
+  min-height:390px;
+}
+.hero-copy{padding:20px 10px 15px 22px;display:flex;flex-direction:column;justify-content:center}
+.kicker{
+  display:flex;align-items:center;gap:16px;
+  font-size:13px;font-weight:600;letter-spacing:.22em;
+  margin-bottom:16px;text-transform:uppercase;
+}
+.kicker:before{content:"";width:56px;height:1px;background:#222}
+.hero h1{
+  font-size:clamp(70px,9vw,124px);
+  line-height:.78;letter-spacing:-.075em;
+  font-weight:900;margin-bottom:22px;
+}
+.hero p{
+  max-width:470px;font-size:19px;line-height:1.25;color:#333;
+  margin-bottom:24px;
+}
+.pill{
+  display:inline-flex;align-items:center;justify-content:space-between;gap:24px;
+  width:max-content;border:1px solid #555;border-radius:999px;
+  padding:12px 14px 12px 20px;font-size:12px;font-weight:700;
+  transition:.3s;
+}
+.pill .arrow,.round-arrow{
+  width:28px;height:28px;border:1px solid currentColor;border-radius:50%;
+  display:grid;place-items:center;font-size:17px;transition:.3s;
+}
+.pill:hover{background:#090909;color:#fff;transform:translateY(-2px)}
+.pill:hover .arrow{transform:rotate(45deg)}
+
+.hero-media{
+  position:relative;border-radius:15px;overflow:hidden;min-height:365px;
+  background:#111;
+}
+.hero-media img{filter:saturate(.85)}
+.media-tag{
+  position:absolute;right:24px;top:56px;color:#fff;
+  font-size:14px;line-height:1.45;letter-spacing:.18em;
+}
+.result-card{
+  position:absolute;right:8px;bottom:8px;width:195px;
+  background:rgba(13,13,13,.94);color:#fff;border:1px solid #444;
+  border-radius:15px;padding:25px 20px 20px;
+}
+.result-card .circles{display:flex;margin-bottom:15px}
+.result-card .circles i{width:26px;height:26px;border:1px solid #fff;border-radius:50%;margin-right:-8px}
+.result-card strong{display:block;font-size:13px;letter-spacing:.13em;line-height:1.3}
+.result-card .small-arrow{position:absolute;right:17px;bottom:17px;width:32px;height:32px;border:1px solid #fff;border-radius:50%;display:grid;place-items:center}
+
+/* GRID */
+.about-grid{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:2fr .8fr;
+  gap:14px;
+}
+.dark-card{
+  background:#0a0a0a;color:#fff;border-radius:var(--radius);
+}
+.who{
+  min-height:305px;position:relative;overflow:hidden;padding:28px;
+  display:grid;grid-template-columns:1.05fr .95fr;
+}
+.who-copy{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between}
+.who h2,.mission h2,.approach h2{
+  font-size:42px;line-height:.95;letter-spacing:-.055em;
+}
+.who p{max-width:450px;font-size:16px;line-height:1.45;color:#d8d8d8}
+.who-visual{position:absolute;right:0;top:0;width:60%;height:100%;opacity:.9}
+.who-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0a0a0a 0%,rgba(10,10,10,.55) 32%,transparent 70%)}
+.who .round-arrow{width:40px;height:40px}
+
+.mission{
+  border-radius:var(--radius);padding:28px;min-height:305px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  background:#ebe8e1;
+}
+.mission .kicker,.approach .kicker{margin-bottom:8px}
+.mission .kicker:before,.approach .kicker:before{display:none}
+.mission p{font-size:15px;line-height:1.45;color:#4b4945;max-width:300px}
+.corner-arrow{font-size:31px;align-self:flex-end}
+
+.middle{
+  margin-top:14px;display:grid;grid-template-columns:.8fr 1.2fr;gap:14px;
+}
+.ideas{position:relative;min-height:300px;overflow:hidden;border-radius:var(--radius);background:#111}
+.ideas:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.7),transparent 75%)}
+.ideas .ideas-text{position:absolute;z-index:2;left:28px;bottom:28px;color:#fff;font-size:25px;font-weight:800;line-height:1.05;max-width:190px}
+.ideas .round-arrow{position:absolute;z-index:2;left:28px;bottom:28px;transform:translateY(52px);width:40px;height:40px}
+.info-stack{display:grid;grid-template-rows:auto 1fr;gap:14px}
+.stats{
+  min-height:132px;background:#090909;color:#fff;border-radius:var(--radius);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding:20px 25px;
+}
+.stat{padding:0 18px;border-left:1px solid #444}
+.stat:first-child{border-left:0}
+.stat strong{font-size:31px;display:block;letter-spacing:-.06em}
+.stat span{font-size:13px;color:#ddd;line-height:1.2;display:block;max-width:90px;margin-top:6px}
+.approach{
+  background:#ebe8e1;border-radius:var(--radius);padding:24px 28px;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:25px;
+}
+.approach h2{font-size:38px}
+.approach p{font-size:15px;line-height:1.45;color:#555;max-width:330px;margin-bottom:18px}
+
+/* TEAM */
+.team{
+  margin-top:14px;background:#090909;color:#fff;border-radius:var(--radius);
+  padding:25px 20px 20px;
+}
+.team-head{display:flex;justify-content:space-between;align-items:flex-start;margin:0 2px 20px}
+.team-head .kicker{margin:0}
+.team-head p{max-width:330px;color:#c9c9c9;font-size:12px;line-height:1.4}
+.team-arrows{display:flex;gap:8px}
+.team-arrows button{width:36px;height:36px;border:1px solid #555;background:transparent;color:#fff;border-radius:50%;cursor:pointer}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.person{
+  height:245px;border:1px solid #555;border-radius:13px;overflow:hidden;position:relative;
+  background:#222;
+}
+.person img{object-position:center 24%;transition:transform .6s}
+.person:hover img{transform:scale(1.04)}
+.person-info{
+  position:absolute;left:0;right:0;bottom:0;padding:18px 14px 13px;
+  background:linear-gradient(transparent,rgba(0,0,0,.95) 30%);
+}
+.person-info h3{font-size:15px;margin-bottom:4px}
+.person-info p{font-size:11px;color:#ddd}
+.socials{display:flex;gap:15px;margin-top:13px;font-size:14px}
+
+/* CTA */
+.cta{
+  margin-top:14px;min-height:235px;border-radius:var(--radius) var(--radius) 0 0;
+  overflow:hidden;position:relative;color:#fff;background:#111;
+  display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:42px 38px;
+}
+.cta img{position:absolute;inset:0;z-index:0}
+.cta:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.75) 42%,rgba(0,0,0,.18) 100%)}
+.cta > *{position:relative;z-index:2}
+.cta h2{font-size:clamp(40px,5vw,68px);line-height:.9;letter-spacing:-.06em;max-width:590px}
+.cta-copy p{max-width:340px;font-size:14px;line-height:1.45;margin-bottom:20px}
+.cta .pill{background:#fff;color:#111;border-color:#fff}
+.cta .pill:hover{background:#111;color:#fff;border-color:#fff}
+
+/* MOBILE */
+@media(max-width:1000px){.navlinks{display:none}.site-nav{grid-template-columns:1fr auto}.contact-btn{padding:13px 16px}}
+@media(max-width:900px){
+  .page{padding:12px}
+  .site-nav{height:auto;margin-bottom:12px}.site-nav .logo{font-size:24px}.site-nav .logo small{font-size:7px}.navright .dots{display:none}
+  .hero{grid-template-columns:1fr;gap:14px}
+  .hero-copy{padding:25px 12px}
+  .hero h1{font-size:clamp(70px,18vw,110px)}
+  .hero-media{min-height:330px}
+  .about-grid,.middle{grid-template-columns:1fr}
+  .who{min-height:430px}
+  .mission{min-height:260px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:20px}
+  .stat:nth-child(3){border-left:0}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .cta{grid-template-columns:1fr;gap:30px}
+}
+@media(max-width:560px){
+  .hero p{font-size:16px}
+  .who{grid-template-columns:1fr;padding:23px;min-height:490px}
+  .who-visual{width:100%;height:58%;top:auto;bottom:0}
+  .who h2{font-size:34px}
+  .mission h2{font-size:37px}
+  .stats{padding:18px 8px}
+  .stat{padding:0 10px}
+  .stat strong{font-size:25px}
+  .approach{grid-template-columns:1fr}
+  .team-head{gap:15px;flex-wrap:wrap}
+  .team-grid{grid-template-columns:1fr 1fr;gap:9px}
+  .person{height:220px}
+  .cta{padding:35px 24px;min-height:390px}
+}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="site-nav">
+  <a class="logo" href="/" aria-label="Latif"><img src="/images/latif logo.png" alt="Latif logo" style="display:block;width:180px;height:auto;"></a>
+  <nav class="navlinks">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a href="about.html" class="active">About</a>
+    <a href="/services">Services</a>
+    <a href="/blog">Blog</a>
+  </nav>
+  <div class="navright"><span class="dots">••••</span><a class="contact-btn" href="/contact">CONTACT US <span>→</span></a></div>
+</header>
+
+<section class="hero reveal">
+  <div class="hero-copy">
+    <div class="kicker">About Latif</div>
+    <h1>ABOUT<br>US</h1>
+    <p>Latif is an independent digital studio crafting meaningful brand experiences through strategy, design, and technology.</p>
+    <a href="#contact" class="pill">LET'S WORK TOGETHER <span class="arrow">↗</span></a>
+  </div>
+
+  <div class="hero-media">
+    <img src="/images/l.png" alt="Latif">
+    <div class="media-tag">STRATEGY<br>DESIGN<br>TECHNOLOGY</div>
+    <div class="result-card">
+      <div class="circles"><i></i><i></i></div>
+      <strong>IDEAS<br>INTO<br>REAL RESULTS</strong>
+      <div class="small-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<section class="about-grid reveal">
+  <article class="who dark-card">
+    <div class="who-copy">
+      <div>
+        <div class="kicker">Who We Are</div>
+        <h2>A Digital Studio<br>with a Bigger Purpose</h2>
+      </div>
+      <div>
+        <p>We’re a team of designers, developers and strategists who believe in the power of good ideas. Our goal is to help brands grow through meaningful digital experiences that look great and deliver real results.</p>
+        <span class="round-arrow" style="margin-top:12px">↗</span>
+      </div>
+    </div>
+    <div class="who-visual"><img src="/images/l2.png" alt=""></div>
+  </article>
+
+  <article class="mission reveal">
+    <div>
+      <div class="kicker">Our Mission</div>
+      <span class="corner-arrow">↗</span>
+    </div>
+    <div>
+      <h2>Create<br>Meaningful<br>Digital<br>Experiences</h2>
+      <p style="margin-top:18px">To help businesses and individuals bring their ideas to life through creative design, smart strategy and modern technology.</p>
+    </div>
+  </article>
+</section>
+
+<section class="middle reveal">
+  <article class="ideas">
+    <img src="/images/l3.png" alt="Bright brands">
+    <div class="ideas-text">GOOD<br>IDEAS<br>BRIGHTER<br>BRANDS</div>
+    <span class="round-arrow">↗</span>
+  </article>
+
+  <div class="info-stack">
+    <div class="stats">
+      <div class="stat"><strong>240+</strong><span>Projects<br>Completed</span></div>
+      <div class="stat"><strong>200+</strong><span>Happy<br>Clients</span></div>
+      <div class="stat"><strong>100%</strong><span>Focused<br>on Results</span></div>
+      <div class="stat"><strong>24/7</strong><span>Support<br>& Collaboration</span></div>
+    </div>
+
+    <article class="approach">
+      <div>
+        <div class="kicker">Our Approach</div>
+        <h2>Strategy.<br>Design.<br>Development.</h2>
+      </div>
+      <div>
+        <p>We combine strategy, creativity and technology to build digital solutions that are user-focused, scalable, and made to make an impact.</p>
+        <a href="#process" class="pill">OUR PROCESS <span class="arrow">↗</span></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="team reveal" id="team">
+  <div class="team-head">
+    <div class="kicker">Meet Our Team</div>
+    <p>A group of passionate individuals working together to turn ideas into impactful digital experiences.</p>
+    <div class="team-arrows">
+      <button aria-label="Previous">←</button>
+      <button aria-label="Next">→</button>
+    </div>
+  </div>
+
+  <div class="team-grid">
+    <article class="person"><img src="/images/ph4.png" alt="Naushad Shaikh"><div class="person-info"><h3>ayan Shaikh</h3><p> Full Stack Developer</p><div class="socials"><span>in</span><span>◎</span><span>◉</span></div></div></article>
+    <article class="person"><img src="/images/ph3.png" alt="Ayesha Khan"><div class="person-info"><h3>Ayesha Khan</h3><p>UI/UX Designer</p><div class="socials"><span>in</span><span>◎</span><span>◉</span></div></div></article>
+    <article class="person"><img src="/images/ph.png" alt="Rahil Ansari"><div class="person-info"><h3>Rahil Ansari</h3><p>Frontend Developer</p><div class="socials"><span>in</span><span>◎</span><span>◉</span></div></div></article>
+    <article class="person"><img src="/images/ph1.png" alt="Sana Patel"><div class="person-info"><h3>Sana Patel</h3><p>Content & Marketing</p><div class="socials"><span>in</span><span>◎</span><span>◉</span></div></div></article>
+  </div>
+</section>
+
+<section class="cta reveal" id="contact">
+  <img src="/images/ad.png" alt="">
+  <div>
+    <div class="kicker">Let's Build Together</div>
+    <h2>Ready to Bring<br>Your Idea to Life?</h2>
+  </div>
+  <div class="cta-copy">
+    <p>We're always excited to work on new projects and collaborate with amazing people.</p>
+    <a href="/contact" class="pill">GET IN TOUCH <span class="arrow">↗</span></a>
+  </div>
+</section>
+
+</main>
+
+<script>
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add('show');
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('.pill').forEach(btn=>{
+  btn.addEventListener('mouseenter',()=>btn.querySelector('.arrow')?.classList.add('spin'));
+  btn.addEventListener('mouseleave',()=>btn.querySelector('.arrow')?.classList.remove('spin'));
+});
+</script>
+</body>
+</html>

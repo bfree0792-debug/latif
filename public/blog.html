@@ -1,0 +1,900 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latif — Blog</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#f5f4ef;color:#111;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{width:100%;height:100%;object-fit:cover;display:block}
+.wrap{width:min(1440px,94vw);margin:auto}
+
+.kicker{
+  display:flex;align-items:center;gap:15px;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:#333
+}
+.kicker:before{content:"";width:55px;height:1px;background:#555}
+
+/* HERO */
+.hero{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;
+  align-items:center;padding:24px 0 22px
+}
+.hero-left{padding-left:8px}
+.hero h1{
+  font-size:clamp(75px,9.5vw,150px);
+  line-height:.76;letter-spacing:-.09em;
+  font-weight:900;margin:20px 0 22px
+}
+.hero-copy{
+  max-width:450px;font-size:18px;line-height:1.42;
+  color:#444;margin-bottom:25px
+}
+.pill{
+  display:inline-flex;align-items:center;gap:27px;
+  padding:15px 22px;border:1px solid #111;border-radius:999px;
+  font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;transition:.3s
+}
+.pill span{font-size:21px}
+.pill:hover{background:#111;color:#fff}
+
+.hero-image{
+  height:285px;border-radius:16px;overflow:hidden;position:relative
+}
+.hero-image img{filter:saturate(.65)}
+.hero-image:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.15),transparent 60%)
+}
+.hero-label{
+  position:absolute;z-index:2;top:35px;left:35px;
+  color:#fff;font-size:11px;letter-spacing:.15em;line-height:1.55
+}
+.feature{
+  position:absolute;z-index:3;right:12px;bottom:14px;
+  width:190px;padding:20px;border-radius:13px;
+  background:#f5f4ef
+}
+.feature small{font-size:9px;letter-spacing:.16em;text-transform:uppercase}
+.feature-line{width:30px;height:1px;background:#999;margin:13px 0}
+.feature p{font-size:12px;line-height:1.45}
+.feature a{
+  display:grid;place-items:center;width:38px;height:38px;
+  border:1px solid #111;border-radius:50%;margin:9px 0 0 auto;
+  font-size:21px
+}
+
+/* BLOG GRID */
+.blog-grid{
+  display:grid;grid-template-columns:1.35fr .9fr .9fr;
+  grid-template-rows:280px 225px 205px;
+  gap:16px;padding:0 0 32px
+}
+.post{
+  position:relative;border-radius:14px;overflow:hidden;
+  background:#111;color:#fff;isolation:isolate
+}
+.post:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.8));
+  z-index:-1
+}
+.post img{position:absolute;inset:0;z-index:-2;transition:.6s ease;filter:saturate(.72)}
+.post:hover img{transform:scale(1.06)}
+.post-content{position:absolute;inset:0;padding:17px;display:flex;flex-direction:column}
+.meta{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:9px;letter-spacing:.08em;text-transform:uppercase
+}
+.tag{
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:999px;padding:7px 11px
+}
+.post h2{
+  margin-top:auto;max-width:380px;
+  font-size:24px;line-height:1.05;letter-spacing:-.04em
+}
+.post p{font-size:11px;line-height:1.45;max-width:330px;margin-top:12px;color:#eee}
+.read{
+  display:inline-flex;align-items:center;gap:18px;
+  border:1px solid #fff;border-radius:999px;
+  padding:11px 15px;margin-top:14px;width:max-content;
+  font-size:9px;font-weight:700;letter-spacing:.12em
+}
+.read span{font-size:18px}
+
+.p1{grid-column:1;grid-row:1}
+.p2{grid-column:2;grid-row:1}
+.p3{grid-column:3;grid-row:1}
+.p4{grid-column:1 / 3;grid-row:2}
+.p5{grid-column:3;grid-row:2}
+.p6{grid-column:1;grid-row:3}
+.p7{grid-column:2;grid-row:3}
+.p8{grid-column:3;grid-row:3}
+
+.p6,.p7,.p8{color:#111;background:#ebe9e3}
+.p6:after,.p7:after,.p8:after{
+  background:linear-gradient(90deg,rgba(235,233,227,.9),rgba(235,233,227,.15))
+}
+.p6 .read,.p7 .read,.p8 .read{border-color:#111}
+.p6 p,.p7 p,.p8 p{color:#333}
+
+/* NEWSLETTER */
+.newsletter{
+  min-height:205px;border-radius:15px;background:#0c0c0c;color:#fff;
+  padding:30px 34px;margin-bottom:28px;
+  display:grid;grid-template-columns:1fr .8fr;gap:50px;
+  align-items:center;overflow:hidden;position:relative
+}
+.newsletter:after{
+  content:"";position:absolute;right:12%;bottom:-100px;
+  width:390px;height:250px;border-radius:50%;
+  border:70px solid #222;transform:rotate(-10deg)
+}
+.newsletter h2{
+  font-size:clamp(43px,5vw,70px);
+  line-height:.84;letter-spacing:-.07em;
+  margin:12px 0 14px;position:relative;z-index:2
+}
+.newsletter p{font-size:14px;line-height:1.5;color:#ccc;position:relative;z-index:2}
+.subscribe{position:relative;z-index:3}
+.email{
+  display:flex;border:1px solid #fff;border-radius:999px;
+  padding:5px 5px 5px 18px;margin-bottom:14px
+}
+.email input{
+  flex:1;background:none;border:0;outline:0;color:#fff;
+  font:12px Inter
+}
+.email button{
+  width:39px;height:39px;border:0;border-radius:50%;
+  background:#fff;color:#111;font-size:20px;cursor:pointer
+}
+.checks{font-size:10px;line-height:2;color:#ccc}
+.checks span{margin-right:7px;color:#fff}
+
+/* TOPICS */
+.topics-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin:5px 4px 15px
+}
+.topics-head .right{
+  font-size:10px;letter-spacing:.1em;text-transform:uppercase
+}
+.topics{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:14px;padding-bottom:45px
+}
+.topic{
+  border-radius:10px;overflow:hidden;background:#ebe9e3;
+  transition:.3s
+}
+.topic:hover{transform:translateY(-4px)}
+.topic-image{height:105px;background:#111;position:relative}
+.topic-image img{filter:saturate(.65)}
+.topic-icon{
+  position:absolute;left:17px;top:14px;color:#fff;
+  font-size:22px;z-index:2
+}
+.topic-info{padding:12px}
+.topic-info h3{font-size:12px;margin-bottom:6px}
+.topic-info p{font-size:10px;color:#666}
+.topic-info a{float:right;font-size:20px;margin-top:-14px}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .hero{grid-template-columns:1fr}
+  .hero-image{height:360px}
+  .blog-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:300px 260px 220px 220px
+  }
+  .p1{grid-column:1 / 3;grid-row:1}
+  .p2{grid-column:1;grid-row:2}
+  .p3{grid-column:2;grid-row:2}
+  .p4{grid-column:1 / 3;grid-row:3}
+  .p5{grid-column:1;grid-row:4}
+  .p6{grid-column:2;grid-row:4}
+  .p7,.p8{grid-column:auto;grid-row:auto}
+  .newsletter{grid-template-columns:1fr}
+  .topics{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  .wrap{width:92vw}
+  .hero h1{font-size:82px}
+  .hero-copy{font-size:16px}
+  .hero-image{height:300px}
+  .blog-grid{display:flex;flex-direction:column}
+  .post{height:300px}
+  .p1{height:350px}
+  .newsletter{padding:25px 22px}
+  .newsletter h2{font-size:48px}
+  .topics{grid-template-columns:1fr 1fr}
+}
+
+/* SITE NAVIGATION */
+.site-nav-wrapper {
+  width: 100%;
+  padding: 18px 22px 0;
+  box-sizing: border-box;
+}
+.site-nav {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 58px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.site-nav .logo {
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -1.8px;
+  line-height: .9;
+  text-decoration: none;
+  color: #0b0b0b;
+}
+.site-nav .logo small {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  margin-top: 7px;
+  color: #777;
+}
+.site-nav .navlinks {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  padding: 17px 42px;
+  border: 1px solid #d8d8d5;
+  border-radius: 28px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, .65);
+  backdrop-filter: blur(8px);
+}
+.site-nav .navlinks a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.2s;
+}
+.site-nav .navlinks a:hover,
+.site-nav .navlinks a.active {
+  color: #000;
+  font-weight: 600;
+}
+.site-nav .navright {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+}
+.site-nav .dots {
+  width: 42px;
+  height: 30px;
+  position: relative;
+}
+.site-nav .dots span {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #111;
+  border-radius: 50%;
+}
+.site-nav .dots span:nth-child(1) { left: 4px; top: 2px; }
+.site-nav .dots span:nth-child(2) { left: 18px; top: 2px; }
+.site-nav .dots span:nth-child(3) { left: 11px; top: 15px; }
+.site-nav .dots span:nth-child(4) { left: 25px; top: 15px; }
+.site-nav .contact-btn {
+  background: #090909;
+  color: #fff;
+  border-radius: 17px;
+  padding: 17px 26px;
+  min-width: 255px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.site-nav .contact-btn:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+.site-nav .btn-arrow {
+  font-size: 25px;
+  line-height: 0;
+}
+@media (max-width: 1000px) {
+  .site-nav { grid-template-columns: 1fr auto; }
+  .site-nav .navlinks { display: none; }
+  .site-nav .navright { grid-column: 2; }
+  .site-nav .contact-btn { min-width: 150px; }
+}
+@media (max-width: 620px) {
+  .site-nav-wrapper { padding: 12px 14px 0; }
+  .site-nav .logo { font-size: 24px; }
+  .site-nav .logo small { font-size: 7px; }
+  .site-nav .dots { display: none; }
+  .site-nav .contact-btn { min-width: auto; padding: 13px 16px; }
+}
+
+/* LATIF FOOTER */
+.latif-footer {
+  width: 100%;
+  max-width: 1500px;
+  margin: 60px auto 30px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.latif-footer * { box-sizing: border-box; margin: 0; padding: 0; }
+.latif-footer a { text-decoration: none; color: inherit; }
+.latif-footer .footer { max-width: 1500px; margin: auto; }
+.latif-footer .cta {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #f4f0ea;
+  color: #0b0b0b;
+  padding: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.latif-footer .cta::after {
+  content: "";
+  position: absolute;
+  right: -5%;
+  top: -20%;
+  width: 68%;
+  height: 150%;
+  background:
+    radial-gradient(ellipse at 48% 56%, transparent 0 25%, #ef762f 26% 35%, transparent 36%),
+    radial-gradient(ellipse at 76% 35%, transparent 0 27%, #d91d1d 28% 39%, transparent 40%),
+    linear-gradient(125deg, transparent 38%, #f7a15b 39% 49%, #f04b31 50% 60%, #9c1017 61% 76%, transparent 77%);
+  transform: rotate(-7deg);
+}
+.latif-footer .cta-label {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 12px;
+  letter-spacing: .22em;
+  color: #555;
+  margin-bottom: 45px;
+}
+.latif-footer .cta-label::before {
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: #777;
+}
+.latif-footer .cta h1 {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  font-size: clamp(55px, 7vw, 98px);
+  line-height: .88;
+  letter-spacing: -.065em;
+  font-weight: 800;
+}
+.latif-footer .cta p {
+  position: relative;
+  z-index: 2;
+  margin-top: 25px;
+  max-width: 520px;
+  color: #777;
+  font-size: 18px;
+  line-height: 1.45;
+}
+.latif-footer .touch {
+  position: relative;
+  z-index: 3;
+  margin-top: 24px;
+  width: max-content;
+  padding: 8px 9px 8px 25px;
+  border-radius: 50px;
+  background: #080808;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform .2s ease;
+}
+.latif-footer .touch:hover { transform: translateY(-2px); }
+.latif-footer .touch span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 21px;
+}
+.latif-footer .bento {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1.35fr .7fr .7fr .7fr 1fr;
+  gap: 15px;
+}
+.latif-footer .card {
+  min-height: 345px;
+  border: 1px solid #292c2c;
+  border-radius: 20px;
+  background: #111313;
+  padding: 35px;
+  color: #fff;
+}
+.latif-footer .brand-card {
+  display: flex;
+  flex-direction: column;
+}
+.latif-footer .logo {
+  font-size: 61px;
+  font-weight: 800;
+  letter-spacing: -.07em;
+}
+.latif-footer .logo span { color: #ff4b22; }
+.latif-footer .brand-card p {
+  margin-top: 25px;
+  max-width: 330px;
+  color: #b9b9b9;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.latif-footer .socials {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+.latif-footer .socials a {
+  width: 47px;
+  height: 47px;
+  border: 1px solid #4a4d4d;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  transition: .3s;
+  color: #fff;
+}
+.latif-footer .socials a:hover {
+  background: #fff;
+  color: #111;
+}
+.latif-footer .links h3 {
+  font-size: 17px;
+  margin-bottom: 42px;
+  color: #fff;
+}
+.latif-footer .links ul {
+  list-style: none;
+  display: grid;
+  gap: 23px;
+}
+.latif-footer .links li a {
+  display: flex;
+  justify-content: space-between;
+  color: #d0d0d0;
+  font-size: 14px;
+  transition: .3s;
+}
+.latif-footer .links li a:hover {
+  color: #fff;
+  transform: translateX(3px);
+}
+.latif-footer .links li a span { color: #999; }
+.latif-footer .newsletter {
+  position: relative;
+  overflow: hidden;
+}
+.latif-footer .newsletter::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -100px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b24, #9e1028);
+  opacity: .85;
+  filter: blur(2px);
+}
+.latif-footer .newsletter small {
+  position: relative;
+  z-index: 2;
+  letter-spacing: .22em;
+  font-size: 11px;
+  color: #bbb;
+}
+.latif-footer .newsletter h2 {
+  position: relative;
+  z-index: 2;
+  margin-top: 35px;
+  max-width: 300px;
+  font-size: 31px;
+  line-height: 1;
+  letter-spacing: -.045em;
+  color: #fff;
+}
+.latif-footer .newsletter p {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.latif-footer .email {
+  position: absolute;
+  z-index: 3;
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+  height: 58px;
+  border: 1px solid #555;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  color: #aaa;
+  font-size: 13px;
+}
+.latif-footer .email button {
+  width: 46px;
+  height: 46px;
+  margin-right: 5px;
+  border: 0;
+  border-radius: 50%;
+  background: #ff4a25;
+  color: #111;
+  font-size: 21px;
+  cursor: pointer;
+}
+.latif-footer .bottom {
+  margin-top: 15px;
+  min-height: 90px;
+  padding: 0 35px;
+  border: 1px solid #292c2c;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #aaa;
+  font-size: 12px;
+}
+.latif-footer .bottom-links {
+  display: flex;
+  gap: 25px;
+}
+.latif-footer .bottom-links a:hover { color: #fff; }
+.latif-footer .heart {
+  color: #ff4a25;
+  font-size: 17px;
+  margin: 0 5px;
+}
+@media (max-width: 1100px) {
+  .latif-footer .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .latif-footer .brand-card { grid-column: span 2; }
+  .latif-footer .newsletter { grid-column: span 2; }
+  .latif-footer .card { min-height: 300px; }
+}
+@media (max-width: 650px) {
+  .latif-footer { padding: 0 10px; }
+  .latif-footer .cta {
+    min-height: 520px;
+    padding: 28px;
+  }
+  .latif-footer .cta-label { margin-bottom: 50px; }
+  .latif-footer .cta h1 { font-size: 54px; }
+  .latif-footer .cta p { font-size: 15px; }
+  .latif-footer .cta::after { width: 90%; right: -30%; }
+  .latif-footer .bento { grid-template-columns: 1fr; gap: 10px; }
+  .latif-footer .brand-card,
+  .latif-footer .newsletter { grid-column: auto; }
+  .latif-footer .card { min-height: 290px; padding: 28px; }
+  .latif-footer .bottom { padding: 25px; flex-direction: column; align-items: flex-start; }
+  .latif-footer .bottom-links { flex-wrap: wrap; gap: 12px; }
+}
+</style>
+</head>
+
+<body>
+<div class="site-nav-wrapper">
+  <header class="site-nav">
+    <a class="logo" href="/" aria-label="Latif"><img src="/images/latif logo.png" alt="Latif logo" style="display:block;width:180px;height:auto;"></a>
+    <nav class="navlinks">
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="about.html">About</a>
+      <a href="/services">Services</a>
+      <a href="/blog" class="active">Blog</a>
+    </nav>
+    <div class="navright">
+      <div class="dots"><span></span><span></span><span></span><span></span></div>
+      <a class="contact-btn" href="/contact">CONTACT US <span class="btn-arrow">→</span></a>
+    </div>
+  </header>
+</div>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="kicker">Our Blog</div>
+    <h1>Blog</h1>
+    <p class="hero-copy">
+      Insights, ideas and strategies to help you grow your brand in the digital world.
+    </p>
+    <a href="#articles" class="pill">Explore Articles <span>↗</span></a>
+  </div>
+
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1600&q=90" alt="Featured article">
+    <div class="hero-label">STRATEGY<br>DESIGN<br>TECHNOLOGY</div>
+    <div class="feature">
+      <small>Featured Article</small>
+      <div class="feature-line"></div>
+      <p>How to Build a Brand<br>That Actually Grows</p>
+      <a href="#articles">→</a>
+    </div>
+  </div>
+</section>
+
+<section class="blog-grid" id="articles">
+
+  <article class="post p1">
+    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85" alt="">
+    <div class="post-content">
+      <div class="meta"><span class="tag">Strategy</span><span>Sep 22, 2024</span></div>
+      <h2>The Complete Guide<br>to Digital Branding<br>in 2024</h2>
+      <p>Learn how to build a strong digital brand that stands out and drives real business growth.</p>
+      <a href="#articles" class="read">Read More <span>↗</span></a>
+    </div>
+  </article>
+
+  <article class="post p2">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1000&q=85" alt="">
+    <div class="post-content">
+      <div class="meta"><span class="tag">Marketing</span><span>Sep 18, 2024</span></div>
+      <h2>Social Media<br>Strategies That<br>Actually Work</h2>
+      <p>Proven strategies to grow your audience and increase engagement.</p>
+      <a href="#articles" class="read">Read More <span>↗</span></a>
+    </div>
+  </article>
+
+  <article class="post p3">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=85" alt="">
+    <div class="post-content">
+      <div class="meta"><span class="tag">SEO</span><span>Sep 15, 2024</span></div>
+      <h2>A Beginner's<br>Guide to SEO<br>for Modern Websites</h2>
+      <p>Simple and effective SEO strategies to improve your search rankings.</p>
+      <a href="#articles" class="read">Read More <span>↗</span></a>
+    </div>
+  </article>
+
+  <article class="post p4">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=85" alt="">
+    <div class="post-content">
+      <div class="meta"><span class="tag">Web Development</span><span>Sep 12, 2024</span></div>
+      <h2>Top Web Development<br>Trends in 2024</h2>
+      <p>Explore the latest technologies and trends shaping the future of web development.</p>
+      <a href="#articles" class="read">Read More <span>↗</span></a>
+    </div>
+  </article>
+
+  <article class="post p5">
+    <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=1000&q=85" alt="">
+    <div class="post-content">
+      <div class="meta"><span class="tag">Advertising</span><span>Sep 10, 2024</span></div>
+      <h2>How to Run High-<br>Performing Ad Campaigns</h2>
+      <p>A step-by-step guide to creating ads that attract, engage, and convert.</p>
+      <a href="#articles" class="read">Read More <span>↗</span></a>
+    </div>
+  </article>
+
+  <article class="post p6">
+    <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=1000&q=85" alt="">
+    <div class="post-content">
+      <div class="meta"><span class="tag">Instagram</span><span>Sep 08, 2024</span></div>
+      <h2>Instagram Growth<br>Tips for Businesses</h2>
+      <p>Actionable tips to grow your Instagram and build a loyal community.</p>
+      <a href="#articles" class="read">Read More <span>↗</span></a>
+    </div>
+  </article>
+
+  <article class="post p7">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=85" alt="">
+    <div class="post-content">
+      <div class="meta"><span class="tag">Business</span><span>Sep 05, 2024</span></div>
+      <h2>From Idea to Brand:<br>A Step-by-Step Guide</h2>
+      <p>Turn your idea into a successful brand with this practical guide.</p>
+      <a href="#articles" class="read">Read More <span>↗</span></a>
+    </div>
+  </article>
+
+  <article class="post p8">
+    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85" alt="">
+    <div class="post-content">
+      <div class="meta"><span class="tag">Video</span><span>Sep 02, 2024</span></div>
+      <h2>The Power of<br>Video Marketing</h2>
+      <p>How to create high-impact video content that drives results.</p>
+      <a href="#articles" class="read">Read More <span>↗</span></a>
+    </div>
+  </article>
+
+</section>
+
+<section class="newsletter">
+  <div>
+    <div class="kicker" style="color:#aaa">Stay Ahead</div>
+    <h2>Get the Latest<br>Insights</h2>
+    <p>Subscribe to our newsletter and get the latest articles,<br>strategies and digital growth tips straight to your inbox.</p>
+  </div>
+  <div class="subscribe">
+    <form class="email" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓'">
+      <input type="email" placeholder="Enter your email address" required>
+      <button type="submit">→</button>
+    </form>
+    <div class="checks"><span>●</span> New articles weekly<br><span>●</span> No spam</div>
+  </div>
+</section>
+
+<div class="topics-head">
+  <div class="kicker">Popular Topics</div>
+  <a href="#articles" class="right" style="text-decoration:none;color:inherit">View All Topics ↗</a>
+</div>
+
+<section class="topics">
+  <article class="topic">
+    <div class="topic-image"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt=""><div class="topic-icon">◎</div></div>
+    <div class="topic-info"><h3>Web Development</h3><p>12 Articles</p><a href="#articles">↗</a></div>
+  </article>
+  <article class="topic">
+    <div class="topic-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt=""><div class="topic-icon">▮▮</div></div>
+    <div class="topic-info"><h3>Marketing</h3><p>18 Articles</p><a href="#articles">↗</a></div>
+  </article>
+  <article class="topic">
+    <div class="topic-image"><img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=600&q=80" alt=""><div class="topic-icon">⌕</div></div>
+    <div class="topic-info"><h3>SEO</h3><p>10 Articles</p><a href="#articles">↗</a></div>
+  </article>
+  <article class="topic">
+    <div class="topic-image"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80" alt=""><div class="topic-icon">◎</div></div>
+    <div class="topic-info"><h3>Social Media</h3><p>14 Articles</p><a href="#articles">↗</a></div>
+  </article>
+  <article class="topic">
+    <div class="topic-image"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt=""><div class="topic-icon">▮</div></div>
+    <div class="topic-info"><h3>Video</h3><p>8 Articles</p><a href="#articles">↗</a></div>
+  </article>
+  <article class="topic">
+    <div class="topic-image"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80" alt=""><div class="topic-icon">✧</div></div>
+    <div class="topic-info"><h3>Strategy</h3><p>16 Articles</p><a href="#articles">↗</a></div>
+  </article>
+</section>
+
+</main>
+
+<div class="latif-footer">
+<footer class="footer">
+  <section class="cta">
+    <div class="cta-label">LET'S WORK TOGETHER</div>
+    <h1>Have a project<br>in mind?</h1>
+    <p>
+      Let’s create something meaningful together.<br>
+      We’re always open to new opportunities.
+    </p>
+    <a class="touch" href="/contact">
+      Get in Touch
+      <span>→</span>
+    </a>
+  </section>
+
+  <section class="bento">
+    <div class="card brand-card">
+      <div class="logo">Latif<span>.</span></div>
+      <p>
+        An independent digital studio crafting
+        meaningful brand experiences through
+        strategy, design, and technology.
+      </p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Dribbble">dr</a>
+        <a href="#" aria-label="Behance">be</a>
+        <a href="#" aria-label="YouTube">yt</a>
+      </div>
+    </div>
+
+    <div class="card links">
+      <h3>Pages ↗</h3>
+      <ul>
+        <li><a href="/">Home <span>↗</span></a></li>
+        <li><a href="about.html">About <span>↗</span></a></li>
+        <li><a href="/projects">Projects <span>↗</span></a></li>
+        <li><a href="/services">Services <span>↗</span></a></li>
+        <li><a href="/blog">Blog <span>↗</span></a></li>
+        <li><a href="/contact">Contact <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card links">
+      <h3>Services ↗</h3>
+      <ul>
+        <li><a href="/services">Web Design <span>↗</span></a></li>
+        <li><a href="/services">Web Development <span>↗</span></a></li>
+        <li><a href="/services">SEO <span>↗</span></a></li>
+        <li><a href="/services">Social Media <span>↗</span></a></li>
+        <li><a href="/services">Branding <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card links">
+      <h3>Resources ↗</h3>
+      <ul>
+        <li><a href="/blog">Blog <span>↗</span></a></li>
+        <li><a href="/projects">Case Studies <span>↗</span></a></li>
+        <li><a href="#privacy">Privacy Policy <span>↗</span></a></li>
+        <li><a href="#terms">Terms <span>↗</span></a></li>
+        <li><a href="#faqs">FAQs <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card newsletter">
+      <small>STAY UPDATED</small>
+      <h2>Get the latest insights &amp; updates</h2>
+      <p>
+        Subscribe to our newsletter and
+        never miss an update.
+      </p>
+      <form class="email" onsubmit="subscribe(event)">
+        <span>Enter your email</span>
+        <button>→</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="bottom">
+    <div>© 2024 Latif. All rights reserved.</div>
+    <div class="bottom-links">
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms of Service</a>
+      <a href="#faqs">FAQs</a>
+    </div>
+    <div>
+      Designed and Developed with
+      <span class="heart">♥</span>
+      by Latif
+    </div>
+  </div>
+</footer>
+
+<script>
+function subscribe(event){
+  event.preventDefault();
+  event.currentTarget.querySelector("span").textContent =
+    "Thanks for subscribing!";
+}
+</script>
+</div>
+</body>
+</html>

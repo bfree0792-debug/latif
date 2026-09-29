@@ -1,0 +1,919 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latif — Services</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#f5f4ef;color:#111;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{width:100%;height:100%;object-fit:cover;display:block}
+
+.wrap{width:min(1440px,94vw);margin:auto}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  padding:25px 0 48px;
+  min-height:510px;
+  align-items:center;
+}
+.hero-left{padding:10px 0 0 10px}
+.kicker{
+  display:flex;align-items:center;gap:15px;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:15px;color:#333
+}
+.kicker:before{content:"";width:54px;height:1px;background:#555}
+.hero h1{
+  font-size:clamp(70px,9vw,145px);
+  line-height:.78;letter-spacing:-.085em;
+  font-weight:900;text-transform:uppercase;
+  margin-bottom:28px
+}
+.hero-copy{
+  max-width:520px;font-size:18px;line-height:1.45;
+  color:#333;margin-bottom:25px
+}
+.pill{
+  display:inline-flex;align-items:center;gap:25px;
+  border:1px solid #111;border-radius:999px;
+  padding:15px 23px;font-size:11px;
+  font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;transition:.3s
+}
+.pill span{font-size:21px}
+.pill:hover{background:#111;color:#fff}
+
+.hero-visual{
+  height:390px;border-radius:18px;overflow:hidden;
+  position:relative;background:#222
+}
+.hero-visual img{filter:saturate(.7)}
+.hero-top-text{
+  position:absolute;top:27px;left:27px;
+  color:#fff;font-size:11px;line-height:1.6;
+  letter-spacing:.17em;z-index:2
+}
+.hero-note{
+  position:absolute;right:16px;bottom:17px;
+  width:155px;padding:20px;border-radius:13px;
+  background:#f7f6f1;z-index:2
+}
+.hero-note strong{
+  display:block;font-size:10px;line-height:1.5;
+  letter-spacing:.14em;text-transform:uppercase
+}
+.hero-note b{display:block;font-size:24px;font-weight:400;text-align:right;margin-top:8px}
+
+/* SECTION HEADER */
+.section-head{
+  display:grid;grid-template-columns:1.4fr .6fr;
+  gap:50px;align-items:end;margin:0 0 28px
+}
+.section-title{
+  font-size:clamp(45px,5.2vw,80px);
+  line-height:.88;letter-spacing:-.07em;
+  max-width:780px
+}
+.section-side{
+  font-size:13px;line-height:1.55;color:#444
+}
+.section-side .pill{margin-top:17px}
+
+/* BENTO SERVICES */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:245px;
+  gap:14px;
+}
+.service{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  background:#ebeae5;
+  border:1px solid rgba(0,0,0,.05);
+  transition:transform .35s ease,box-shadow .35s ease
+}
+.service:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.09)}
+.service-text{padding:24px;position:relative;z-index:3;height:100%}
+.service-num{font-size:12px;margin-bottom:25px}
+.service-icon{font-size:29px;margin-bottom:14px}
+.service h3{font-size:20px;line-height:1.05;margin-bottom:9px;max-width:260px}
+.service p{font-size:12px;line-height:1.48;max-width:260px;color:#444}
+.service-link{
+  position:absolute;left:24px;bottom:20px;
+  display:flex;align-items:center;gap:15px;
+  font-size:10px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase
+}
+.service-link span{font-size:19px;font-weight:400}
+
+/* image side */
+.service-image{
+  position:absolute;right:0;top:0;bottom:0;width:53%;
+  overflow:hidden
+}
+.service-image img{width:100%;height:100%;object-fit:cover;display:block;transition:.55s ease;filter:saturate(.75)}
+.service:hover .service-image img{transform:scale(1.06)}
+.service:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(235,234,229,.12),transparent 48%)
+}
+
+/* Layout matching reference */
+.s1{grid-column:span 7;background:#111;color:#fff}
+.s1 p{color:#ddd}.s1 .service-image{width:58%}
+.s1:after{background:linear-gradient(90deg,#111 0%,rgba(17,17,17,.75) 35%,transparent 65%)}
+.s2{grid-column:span 5}
+.s3{grid-column:span 5}
+.s4{grid-column:span 7}
+.s5{grid-column:span 5}
+.s6{grid-column:span 7}
+.s7{grid-column:span 4}
+.s8{grid-column:span 4}
+.s9{grid-column:span 4}
+
+/* WHY */
+.why{
+  margin:38px 0 45px;
+  border-radius:17px;
+  background:#0c0c0c;color:#fff;
+  padding:35px 35px 27px
+}
+.why-top{
+  display:grid;grid-template-columns:1fr 1.6fr;
+  gap:40px;align-items:start
+}
+.why-title{
+  font-size:clamp(48px,5.5vw,80px);
+  line-height:.86;letter-spacing:-.065em
+}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:30px 45px
+}
+.why-item{display:grid;grid-template-columns:58px 1fr;gap:17px}
+.why-icon{
+  width:55px;height:55px;border-radius:50%;
+  background:#222;display:grid;place-items:center;font-size:22px
+}
+.why-item h3{font-size:13px;margin:3px 0 7px}
+.why-item p{font-size:11px;line-height:1.5;color:#bbb}
+.why-bottom{
+  border-top:1px solid #444;
+  margin-top:34px;padding-top:22px;
+  display:flex;justify-content:space-between;align-items:center
+}
+.why-bottom p{font-size:17px}
+.why-bottom .pill{border-color:#fff;color:#fff}
+.why-bottom .pill:hover{background:#fff;color:#111}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .hero{grid-template-columns:1fr}
+  .hero-visual{height:420px}
+  .section-head{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr;grid-auto-rows:300px}
+  .s1,.s2,.s3,.s4,.s5,.s6,.s7,.s8,.s9{grid-column:span 1}
+  .s1{grid-column:span 2}
+  .why-top{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .wrap{width:92vw}
+  .hero{padding-top:18px}
+  .hero h1{font-size:78px}
+  .hero-visual{height:320px}
+  .hero-copy{font-size:16px}
+  .services-grid{display:flex;flex-direction:column}
+  .service{min-height:300px}
+  .s1{min-height:360px}
+  .why{padding:25px 20px}
+  .why-grid{grid-template-columns:1fr}
+  .why-bottom{display:block}
+  .why-bottom .pill{margin-top:18px}
+}
+
+/* SITE NAVIGATION */
+.site-nav-wrapper {
+  width: 100%;
+  padding: 18px 22px 0;
+  box-sizing: border-box;
+}
+.site-nav {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 58px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.site-nav .logo {
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -1.8px;
+  line-height: .9;
+  text-decoration: none;
+  color: #0b0b0b;
+}
+.site-nav .logo small {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  margin-top: 7px;
+  color: #777;
+}
+.site-nav .navlinks {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  padding: 17px 42px;
+  border: 1px solid #d8d8d5;
+  border-radius: 28px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, .65);
+  backdrop-filter: blur(8px);
+}
+.site-nav .navlinks a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.2s;
+}
+.site-nav .navlinks a:hover,
+.site-nav .navlinks a.active {
+  color: #000;
+  font-weight: 600;
+}
+.site-nav .navright {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+}
+.site-nav .dots {
+  width: 42px;
+  height: 30px;
+  position: relative;
+}
+.site-nav .dots span {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #111;
+  border-radius: 50%;
+}
+.site-nav .dots span:nth-child(1) { left: 4px; top: 2px; }
+.site-nav .dots span:nth-child(2) { left: 18px; top: 2px; }
+.site-nav .dots span:nth-child(3) { left: 11px; top: 15px; }
+.site-nav .dots span:nth-child(4) { left: 25px; top: 15px; }
+.site-nav .contact-btn {
+  background: #090909;
+  color: #fff;
+  border-radius: 17px;
+  padding: 17px 26px;
+  min-width: 255px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.site-nav .contact-btn:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+.site-nav .btn-arrow {
+  font-size: 25px;
+  line-height: 0;
+}
+@media (max-width: 1000px) {
+  .site-nav { grid-template-columns: 1fr auto; }
+  .site-nav .navlinks { display: none; }
+  .site-nav .navright { grid-column: 2; }
+  .site-nav .contact-btn { min-width: 150px; }
+}
+@media (max-width: 620px) {
+  .site-nav-wrapper { padding: 12px 14px 0; }
+  .site-nav .logo { font-size: 24px; }
+  .site-nav .logo small { font-size: 7px; }
+  .site-nav .dots { display: none; }
+  .site-nav .contact-btn { min-width: auto; padding: 13px 16px; }
+}
+
+/* LATIF FOOTER */
+.latif-footer {
+  width: 100%;
+  max-width: 1500px;
+  margin: 60px auto 30px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.latif-footer * { box-sizing: border-box; margin: 0; padding: 0; }
+.latif-footer a { text-decoration: none; color: inherit; }
+.latif-footer .footer { max-width: 1500px; margin: auto; }
+.latif-footer .cta {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #f4f0ea;
+  color: #0b0b0b;
+  padding: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.latif-footer .cta::after {
+  content: "";
+  position: absolute;
+  right: -5%;
+  top: -20%;
+  width: 68%;
+  height: 150%;
+  background:
+    radial-gradient(ellipse at 48% 56%, transparent 0 25%, #ef762f 26% 35%, transparent 36%),
+    radial-gradient(ellipse at 76% 35%, transparent 0 27%, #d91d1d 28% 39%, transparent 40%),
+    linear-gradient(125deg, transparent 38%, #f7a15b 39% 49%, #f04b31 50% 60%, #9c1017 61% 76%, transparent 77%);
+  transform: rotate(-7deg);
+}
+.latif-footer .cta-label {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 12px;
+  letter-spacing: .22em;
+  color: #555;
+  margin-bottom: 45px;
+}
+.latif-footer .cta-label::before {
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: #777;
+}
+.latif-footer .cta h1 {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  font-size: clamp(55px, 7vw, 98px);
+  line-height: .88;
+  letter-spacing: -.065em;
+  font-weight: 800;
+}
+.latif-footer .cta p {
+  position: relative;
+  z-index: 2;
+  margin-top: 25px;
+  max-width: 520px;
+  color: #777;
+  font-size: 18px;
+  line-height: 1.45;
+}
+.latif-footer .touch {
+  position: relative;
+  z-index: 3;
+  margin-top: 24px;
+  width: max-content;
+  padding: 8px 9px 8px 25px;
+  border-radius: 50px;
+  background: #080808;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform .2s ease;
+}
+.latif-footer .touch:hover { transform: translateY(-2px); }
+.latif-footer .touch span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 21px;
+}
+.latif-footer .bento {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1.35fr .7fr .7fr .7fr 1fr;
+  gap: 15px;
+}
+.latif-footer .card {
+  min-height: 345px;
+  border: 1px solid #292c2c;
+  border-radius: 20px;
+  background: #111313;
+  padding: 35px;
+  color: #fff;
+}
+.latif-footer .brand-card {
+  display: flex;
+  flex-direction: column;
+}
+.latif-footer .logo {
+  font-size: 61px;
+  font-weight: 800;
+  letter-spacing: -.07em;
+}
+.latif-footer .logo span { color: #ff4b22; }
+.latif-footer .brand-card p {
+  margin-top: 25px;
+  max-width: 330px;
+  color: #b9b9b9;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.latif-footer .socials {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+.latif-footer .socials a {
+  width: 47px;
+  height: 47px;
+  border: 1px solid #4a4d4d;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  transition: .3s;
+  color: #fff;
+}
+.latif-footer .socials a:hover {
+  background: #fff;
+  color: #111;
+}
+.latif-footer .links h3 {
+  font-size: 17px;
+  margin-bottom: 42px;
+  color: #fff;
+}
+.latif-footer .links ul {
+  list-style: none;
+  display: grid;
+  gap: 23px;
+}
+.latif-footer .links li a {
+  display: flex;
+  justify-content: space-between;
+  color: #d0d0d0;
+  font-size: 14px;
+  transition: .3s;
+}
+.latif-footer .links li a:hover {
+  color: #fff;
+  transform: translateX(3px);
+}
+.latif-footer .links li a span { color: #999; }
+.latif-footer .newsletter {
+  position: relative;
+  overflow: hidden;
+}
+.latif-footer .newsletter::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -100px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b24, #9e1028);
+  opacity: .85;
+  filter: blur(2px);
+}
+.latif-footer .newsletter small {
+  position: relative;
+  z-index: 2;
+  letter-spacing: .22em;
+  font-size: 11px;
+  color: #bbb;
+}
+.latif-footer .newsletter h2 {
+  position: relative;
+  z-index: 2;
+  margin-top: 35px;
+  max-width: 300px;
+  font-size: 31px;
+  line-height: 1;
+  letter-spacing: -.045em;
+  color: #fff;
+}
+.latif-footer .newsletter p {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.latif-footer .email {
+  position: absolute;
+  z-index: 3;
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+  height: 58px;
+  border: 1px solid #555;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  color: #aaa;
+  font-size: 13px;
+}
+.latif-footer .email button {
+  width: 46px;
+  height: 46px;
+  margin-right: 5px;
+  border: 0;
+  border-radius: 50%;
+  background: #ff4a25;
+  color: #111;
+  font-size: 21px;
+  cursor: pointer;
+}
+.latif-footer .bottom {
+  margin-top: 15px;
+  min-height: 90px;
+  padding: 0 35px;
+  border: 1px solid #292c2c;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #aaa;
+  font-size: 12px;
+}
+.latif-footer .bottom-links {
+  display: flex;
+  gap: 25px;
+}
+.latif-footer .bottom-links a:hover { color: #fff; }
+.latif-footer .heart {
+  color: #ff4a25;
+  font-size: 17px;
+  margin: 0 5px;
+}
+@media (max-width: 1100px) {
+  .latif-footer .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .latif-footer .brand-card { grid-column: span 2; }
+  .latif-footer .newsletter { grid-column: span 2; }
+  .latif-footer .card { min-height: 300px; }
+}
+@media (max-width: 650px) {
+  .latif-footer { padding: 0 10px; }
+  .latif-footer .cta {
+    min-height: 520px;
+    padding: 28px;
+  }
+  .latif-footer .cta-label { margin-bottom: 50px; }
+  .latif-footer .cta h1 { font-size: 54px; }
+  .latif-footer .cta p { font-size: 15px; }
+  .latif-footer .cta::after { width: 90%; right: -30%; }
+  .latif-footer .bento { grid-template-columns: 1fr; gap: 10px; }
+  .latif-footer .brand-card,
+  .latif-footer .newsletter { grid-column: auto; }
+  .latif-footer .card { min-height: 290px; padding: 28px; }
+  .latif-footer .bottom { padding: 25px; flex-direction: column; align-items: flex-start; }
+  .latif-footer .bottom-links { flex-wrap: wrap; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="site-nav-wrapper">
+  <header class="site-nav">
+    <a class="logo" href="/" aria-label="Latif"><img src="/images/latif logo.png" alt="Latif logo" style="display:block;width:180px;height:auto;"></a>
+    <nav class="navlinks">
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="about.html">About</a>
+      <a href="/services" class="active">Services</a>
+      <a href="/blog">Blog</a>
+    </nav>
+    <div class="navright">
+      <div class="dots"><span></span><span></span><span></span><span></span></div>
+      <a class="contact-btn" href="/contact">CONTACT US <span class="btn-arrow">→</span></a>
+    </div>
+  </header>
+</div>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="kicker">Our Services</div>
+    <h1>Services</h1>
+    <p class="hero-copy">
+      Everything you need to grow online — from strategy and design to
+      development and marketing, all under one roof.
+    </p>
+    <a href="/contact" class="pill">Let's Work Together <span>↗</span></a>
+  </div>
+
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1500&q=90" alt="Creative studio">
+    <div class="hero-top-text">STRATEGY<br>DESIGN<br>TECHNOLOGY</div>
+    <div class="hero-note">
+      <strong>Ideas<br>Into<br>Real Results</strong>
+      <b>↗</b>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <div>
+      <div class="kicker">Our Services</div>
+      <h2 class="section-title">Complete Digital Solutions<br>for Modern Brands</h2>
+    </div>
+    <div class="section-side">
+      We offer a complete range of digital services designed to help your
+      brand grow faster, reach the right audience, and create meaningful results.
+      <br>
+      <a href="/projects" class="pill">View Our Work <span>↗</span></a>
+    </div>
+  </div>
+
+  <div class="services-grid" id="services">
+
+    <article class="service s1">
+      <div class="service-text">
+        <div class="service-num">01</div>
+        <div class="service-icon">◎</div>
+        <h3>Web<br>Development</h3>
+        <p>Custom-built websites and digital platforms designed for speed, functionality, and conversion.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="/images/h1.png" alt="Web development">
+      </div>
+    </article>
+
+    <article class="service s2">
+      <div class="service-text">
+        <div class="service-num">02</div>
+        <div class="service-icon">▮▮▮</div>
+        <h3>Sales</h3>
+        <p>Sales strategy and funnel design that turns traffic and leads into real revenue.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=85" alt="Sales">
+      </div>
+    </article>
+
+    <article class="service s3">
+      <div class="service-text">
+        <div class="service-num">03</div>
+        <div class="service-icon">⌁</div>
+        <h3>Marketing</h3>
+        <p>Full-funnel marketing strategy designed around measurable outcomes, not guesswork.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85" alt="Marketing">
+      </div>
+    </article>
+
+    <article class="service s4">
+      <div class="service-text">
+        <div class="service-num">04</div>
+        <div class="service-icon">◎</div>
+        <h3>Advertising</h3>
+        <p>Paid media campaigns across search, social, and display — built with strong creative.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=1000&q=85" alt="Advertising">
+      </div>
+    </article>
+
+    <article class="service s5">
+      <div class="service-text">
+        <div class="service-num">05</div>
+        <div class="service-icon">♧</div>
+        <h3>Agency Services</h3>
+        <p>End-to-end brand partnership. From strategy to execution, we act as an extension of your team.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=85" alt="Agency">
+      </div>
+    </article>
+
+    <article class="service s6">
+      <div class="service-text">
+        <div class="service-num">06</div>
+        <div class="service-icon">⌕</div>
+        <h3>SEO</h3>
+        <p>Search engine optimization to improve visibility, drive organic traffic, and build discoverability.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1000&q=85" alt="SEO">
+      </div>
+    </article>
+
+    <article class="service s7">
+      <div class="service-text">
+        <div class="service-num">07</div>
+        <div class="service-icon">◎</div>
+        <h3>Instagram Management</h3>
+        <p>Content planning, posting, community engagement, and growth strategy.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=85" alt="Instagram">
+      </div>
+    </article>
+
+    <article class="service s8">
+      <div class="service-text">
+        <div class="service-num">08</div>
+        <div class="service-icon">▮</div>
+        <h3>Video Advertising</h3>
+        <p>High-impact video content built for ad performance — designed to convert.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85" alt="Video advertising">
+      </div>
+    </article>
+
+    <article class="service s9">
+      <div class="service-text">
+        <div class="service-num">09</div>
+        <div class="service-icon">⚙</div>
+        <h3>Custom Solutions</h3>
+        <p>Every brand is different. We offer tailored digital solutions built around your goals.</p>
+        <a href="/contact" class="service-link">Learn More <span>↗</span></a>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85" alt="Custom solutions">
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="why" id="contact">
+  <div class="why-top">
+    <div>
+      <div class="kicker" style="color:#aaa">Why Latif?</div>
+      <h2 class="why-title">Strategy.<br>Creativity.<br>Real Growth.</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">◎</div>
+        <div><h3>Strategy-First Approach</h3><p>We don't start with design, we start with goals.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">◇</div>
+        <div><h3>Full-Service Capability</h3><p>From web to ads to social, all under one roof.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">♧</div>
+        <div><h3>Brand-Focused Execution</h3><p>Every deliverable ties back to your bigger picture.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">ϟ</div>
+        <div><h3>Independent & Flexible</h3><p>No rigid agency bureaucracy, just fast, focused work.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-bottom">
+    <p>Let's Build Something Meaningful</p>
+    <a href="/contact" class="pill">Get In Touch <span>↗</span></a>
+  </div>
+</section>
+
+</main>
+
+<div class="latif-footer">
+<footer class="footer">
+  <section class="cta">
+    <div class="cta-label">LET'S WORK TOGETHER</div>
+    <h1>Have a project<br>in mind?</h1>
+    <p>
+      Let’s create something meaningful together.<br>
+      We’re always open to new opportunities.
+    </p>
+    <a class="touch" href="/contact">
+      Get in Touch
+      <span>→</span>
+    </a>
+  </section>
+
+  <section class="bento">
+    <div class="card brand-card">
+      <div class="logo">Latif<span>.</span></div>
+      <p>
+        An independent digital studio crafting
+        meaningful brand experiences through
+        strategy, design, and technology.
+      </p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Dribbble">dr</a>
+        <a href="#" aria-label="Behance">be</a>
+        <a href="#" aria-label="YouTube">yt</a>
+      </div>
+    </div>
+
+    <div class="card links">
+      <h3>Pages ↗</h3>
+      <ul>
+        <li><a href="/">Home <span>↗</span></a></li>
+        <li><a href="about.html">About <span>↗</span></a></li>
+        <li><a href="/projects">Projects <span>↗</span></a></li>
+        <li><a href="/services">Services <span>↗</span></a></li>
+        <li><a href="/blog">Blog <span>↗</span></a></li>
+        <li><a href="/contact">Contact <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card links">
+      <h3>Services ↗</h3>
+      <ul>
+        <li><a href="/services">Web Design <span>↗</span></a></li>
+        <li><a href="/services">Web Development <span>↗</span></a></li>
+        <li><a href="/services">SEO <span>↗</span></a></li>
+        <li><a href="/services">Social Media <span>↗</span></a></li>
+        <li><a href="/services">Branding <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card links">
+      <h3>Resources ↗</h3>
+      <ul>
+        <li><a href="/blog">Blog <span>↗</span></a></li>
+        <li><a href="/projects">Case Studies <span>↗</span></a></li>
+        <li><a href="#privacy">Privacy Policy <span>↗</span></a></li>
+        <li><a href="#terms">Terms <span>↗</span></a></li>
+        <li><a href="#faqs">FAQs <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card newsletter">
+      <small>STAY UPDATED</small>
+      <h2>Get the latest insights &amp; updates</h2>
+      <p>
+        Subscribe to our newsletter and
+        never miss an update.
+      </p>
+      <form class="email" onsubmit="subscribe(event)">
+        <span>Enter your email</span>
+        <button>→</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="bottom">
+    <div>© 2024 Latif. All rights reserved.</div>
+    <div class="bottom-links">
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms of Service</a>
+      <a href="#faqs">FAQs</a>
+    </div>
+    <div>
+      Designed and Developed with
+      <span class="heart">♥</span>
+      by Latif
+    </div>
+  </div>
+</footer>
+
+<script>
+function subscribe(event){
+  event.preventDefault();
+  event.currentTarget.querySelector("span").textContent =
+    "Thanks for subscribing!";
+}
+</script>
+</div>
+</body>
+</html>
