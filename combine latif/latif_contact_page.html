@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latif — Contact</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#f5f4ef;color:#111;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+img{width:100%;height:100%;object-fit:cover;display:block}
+.wrap{width:min(1440px,94vw);margin:auto}
+
+.kicker{
+  display:flex;align-items:center;gap:15px;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:#333
+}
+.kicker:before{content:"";width:55px;height:1px;background:#666}
+
+.pill{
+  display:inline-flex;align-items:center;gap:26px;
+  border:1px solid #111;border-radius:999px;
+  padding:15px 22px;font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:.3s
+}
+.pill span{font-size:21px;font-weight:400}
+.pill:hover{background:#111;color:#fff}
+
+/* HERO */
+.hero{
+  display:grid;grid-template-columns:.86fr 1.14fr;
+  gap:48px;align-items:center;padding:22px 0 35px
+}
+.hero-copy{padding-left:8px}
+.hero h1{
+  font-size:clamp(72px,9vw,145px);
+  line-height:.72;letter-spacing:-.09em;
+  font-weight:900;margin:19px 0 22px
+}
+.hero-text{
+  max-width:410px;font-size:17px;line-height:1.48;
+  color:#333;margin-bottom:25px
+}
+.hero-image{
+  height:335px;border-radius:17px;overflow:hidden;
+  position:relative;background:#222
+}
+.hero-image img{filter:saturate(.65)}
+.hero-image:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.08),transparent)
+}
+.hero-label{
+  position:absolute;left:28px;top:28px;color:#fff;
+  z-index:2;font-size:11px;line-height:1.55;letter-spacing:.14em
+}
+.hero-note{
+  position:absolute;right:13px;bottom:13px;width:165px;
+  background:#f5f4ef;border-radius:13px;padding:20px;z-index:3
+}
+.hero-note .symbol{font-size:28px;margin-bottom:18px}
+.hero-note p{font-size:10px;line-height:1.45;letter-spacing:.14em;text-transform:uppercase}
+.hero-note b{display:block;text-align:right;font-size:21px;font-weight:400;margin-top:7px}
+
+/* CONTACT AREA */
+.contact-grid{
+  display:grid;grid-template-columns:.38fr .62fr;
+  gap:18px;margin-bottom:18px
+}
+.contact-cards{display:grid;grid-template-rows:repeat(3,1fr);gap:17px}
+.info-card{
+  min-height:120px;border-radius:14px;padding:22px;
+  display:grid;grid-template-columns:58px 1fr 25px;
+  gap:16px;align-items:center;background:#e9e8e3
+}
+.info-card.dark{background:#0d0d0d;color:#fff}
+.info-icon{
+  width:55px;height:55px;border-radius:50%;
+  background:#222;display:grid;place-items:center;
+  font-size:25px;color:#fff
+}
+.info-card:not(.dark) .info-icon{background:#fff;color:#111}
+.info-card h3{font-size:18px;margin-bottom:5px}
+.info-card p{font-size:13px;line-height:1.45;color:#bbb}
+.info-card:not(.dark) p{color:#333}
+.info-arrow{font-size:25px;font-weight:300;align-self:start}
+
+/* FORM */
+.form-box{
+  background:#0d0d0d;color:#fff;border-radius:15px;
+  padding:27px 29px 20px
+}
+.form-head{
+  display:grid;grid-template-columns:1.15fr .75fr;
+  gap:35px;margin-bottom:23px
+}
+.form-title{
+  font-size:clamp(37px,4vw,57px);
+  line-height:.9;letter-spacing:-.06em;margin-top:16px
+}
+.form-intro{font-size:13px;line-height:1.5;color:#ddd;padding-top:18px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.field{
+  height:43px;border-radius:7px;border:1px solid #383838;
+  background:#202020;color:#fff;padding:0 13px;display:flex;align-items:center
+}
+.field input,.field select{
+  width:100%;border:0;outline:0;background:transparent;color:#fff;
+  font-size:12px
+}
+.field select option{background:#222}
+.field-wide{grid-column:1/-1;height:83px;align-items:flex-start;padding-top:11px}
+.field textarea{width:100%;height:62px;resize:none;border:0;outline:0;background:transparent;color:#fff;font-size:12px}
+.form-bottom{
+  display:flex;justify-content:space-between;align-items:center;margin-top:14px
+}
+.send{
+  border:0;background:#fff;color:#111;border-radius:999px;
+  padding:14px 22px;display:flex;gap:28px;align-items:center;
+  font-size:10px;font-weight:700;letter-spacing:.1em;cursor:pointer
+}
+.send span{font-size:21px}
+.safe{font-size:9px;color:#bbb;text-align:right}
+
+/* MEETING */
+.meeting{
+  min-height:285px;border-radius:15px;overflow:hidden;
+  position:relative;margin-bottom:16px
+}
+.meeting img{position:absolute;inset:0;filter:saturate(.65)}
+.meeting:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,#f5f4ef 0%,rgba(245,244,239,.93) 31%,rgba(245,244,239,.25) 62%,rgba(0,0,0,.05))
+}
+.meeting-content{
+  position:relative;z-index:2;width:42%;height:100%;
+  padding:28px 30px
+}
+.meeting h2{
+  font-size:clamp(39px,4.4vw,61px);
+  line-height:.85;letter-spacing:-.065em;
+  margin:17px 0 18px
+}
+.meeting p{font-size:12px;line-height:1.5;max-width:300px;margin-bottom:18px}
+
+/* QUICK LINKS */
+.quick{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin-bottom:18px
+}
+.quick-card{
+  min-height:145px;background:#ebeae5;border-radius:12px;
+  padding:18px;position:relative;transition:.3s
+}
+.quick-card:hover{transform:translateY(-4px);background:#e4e3de}
+.quick-icon{font-size:27px;margin-bottom:30px}
+.quick-card .arrow{position:absolute;right:17px;top:16px;font-size:22px}
+.quick-card h3{font-size:15px;margin-bottom:5px}
+.quick-card p{font-size:11px;line-height:1.45;color:#444}
+
+/* SOCIAL */
+.social{
+  min-height:160px;background:#0d0d0d;color:#fff;border-radius:15px;
+  padding:27px 30px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:45px
+}
+.social:after{
+  content:"";position:absolute;right:-20px;bottom:-100px;
+  width:320px;height:230px;border-radius:50%;
+  border:65px solid #242424;transform:rotate(-20deg)
+}
+.social-copy{position:relative;z-index:2}
+.social h2{
+  font-size:clamp(39px,4.5vw,61px);
+  line-height:.9;letter-spacing:-.06em;margin:13px 0 8px
+}
+.social p{font-size:12px;color:#bbb}
+.social-links{display:flex;gap:9px;position:relative;z-index:3;margin-right:200px}
+.social-link{
+  width:49px;height:49px;border-radius:50%;
+  background:#202020;display:grid;place-items:center;
+  font-size:15px;border:1px solid #3b3b3b;transition:.25s
+}
+.social-link:hover{background:#fff;color:#111}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .hero{grid-template-columns:1fr}
+  .hero-image{height:390px}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-cards{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr}
+  .form-head{grid-template-columns:1fr}
+  .meeting-content{width:60%}
+  .social-links{margin-right:100px}
+}
+@media(max-width:650px){
+  .wrap{width:92vw}
+  .hero h1{font-size:80px}
+  .hero-text{font-size:16px}
+  .hero-image{height:310px}
+  .contact-cards{grid-template-columns:1fr}
+  .form-box{padding:22px 17px}
+  .form-grid{grid-template-columns:1fr}
+  .field-wide{grid-column:auto}
+  .form-bottom{display:block}
+  .safe{text-align:left;margin-top:12px}
+  .meeting{min-height:390px}
+  .meeting-content{width:90%;padding:23px}
+  .meeting:after{background:linear-gradient(180deg,#f5f4ef 0%,rgba(245,244,239,.9) 52%,rgba(0,0,0,.1))}
+  .quick{grid-template-columns:1fr 1fr}
+  .quick-card{min-height:155px}
+  .social{display:block}
+  .social-links{margin:22px 0 0}
+}
+
+/* SITE NAVIGATION */
+.site-nav-wrapper {
+  width: 100%;
+  padding: 18px 22px 0;
+  box-sizing: border-box;
+}
+.site-nav {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 58px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.site-nav .logo {
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -1.8px;
+  line-height: .9;
+  text-decoration: none;
+  color: #0b0b0b;
+}
+.site-nav .logo small {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  margin-top: 7px;
+  color: #777;
+}
+.site-nav .navlinks {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  padding: 17px 42px;
+  border: 1px solid #d8d8d5;
+  border-radius: 28px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, .65);
+  backdrop-filter: blur(8px);
+}
+.site-nav .navlinks a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.2s;
+}
+.site-nav .navlinks a:hover,
+.site-nav .navlinks a.active {
+  color: #000;
+  font-weight: 600;
+}
+.site-nav .navright {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+}
+.site-nav .dots {
+  width: 42px;
+  height: 30px;
+  position: relative;
+}
+.site-nav .dots span {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #111;
+  border-radius: 50%;
+}
+.site-nav .dots span:nth-child(1) { left: 4px; top: 2px; }
+.site-nav .dots span:nth-child(2) { left: 18px; top: 2px; }
+.site-nav .dots span:nth-child(3) { left: 11px; top: 15px; }
+.site-nav .dots span:nth-child(4) { left: 25px; top: 15px; }
+.site-nav .contact-btn {
+  background: #090909;
+  color: #fff;
+  border-radius: 17px;
+  padding: 17px 26px;
+  min-width: 255px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.site-nav .contact-btn:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+.site-nav .btn-arrow {
+  font-size: 25px;
+  line-height: 0;
+}
+@media (max-width: 1000px) {
+  .site-nav { grid-template-columns: 1fr auto; }
+  .site-nav .navlinks { display: none; }
+  .site-nav .navright { grid-column: 2; }
+  .site-nav .contact-btn { min-width: 150px; }
+}
+@media (max-width: 620px) {
+  .site-nav-wrapper { padding: 12px 14px 0; }
+  .site-nav .logo { font-size: 24px; }
+  .site-nav .logo small { font-size: 7px; }
+  .site-nav .dots { display: none; }
+  .site-nav .contact-btn { min-width: auto; padding: 13px 16px; }
+}
+
+/* LATIF FOOTER */
+.latif-footer {
+  width: 100%;
+  max-width: 1500px;
+  margin: 60px auto 30px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.latif-footer * { box-sizing: border-box; margin: 0; padding: 0; }
+.latif-footer a { text-decoration: none; color: inherit; }
+.latif-footer .footer { max-width: 1500px; margin: auto; }
+.latif-footer .cta {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #f4f0ea;
+  color: #0b0b0b;
+  padding: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.latif-footer .cta::after {
+  content: "";
+  position: absolute;
+  right: -5%;
+  top: -20%;
+  width: 68%;
+  height: 150%;
+  background:
+    radial-gradient(ellipse at 48% 56%, transparent 0 25%, #ef762f 26% 35%, transparent 36%),
+    radial-gradient(ellipse at 76% 35%, transparent 0 27%, #d91d1d 28% 39%, transparent 40%),
+    linear-gradient(125deg, transparent 38%, #f7a15b 39% 49%, #f04b31 50% 60%, #9c1017 61% 76%, transparent 77%);
+  transform: rotate(-7deg);
+}
+.latif-footer .cta-label {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 12px;
+  letter-spacing: .22em;
+  color: #555;
+  margin-bottom: 45px;
+}
+.latif-footer .cta-label::before {
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: #777;
+}
+.latif-footer .cta h1 {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  font-size: clamp(55px, 7vw, 98px);
+  line-height: .88;
+  letter-spacing: -.065em;
+  font-weight: 800;
+}
+.latif-footer .cta p {
+  position: relative;
+  z-index: 2;
+  margin-top: 25px;
+  max-width: 520px;
+  color: #777;
+  font-size: 18px;
+  line-height: 1.45;
+}
+.latif-footer .touch {
+  position: relative;
+  z-index: 3;
+  margin-top: 24px;
+  width: max-content;
+  padding: 8px 9px 8px 25px;
+  border-radius: 50px;
+  background: #080808;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform .2s ease;
+}
+.latif-footer .touch:hover { transform: translateY(-2px); }
+.latif-footer .touch span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 21px;
+}
+.latif-footer .bento {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1.35fr .7fr .7fr .7fr 1fr;
+  gap: 15px;
+}
+.latif-footer .card {
+  min-height: 345px;
+  border: 1px solid #292c2c;
+  border-radius: 20px;
+  background: #111313;
+  padding: 35px;
+  color: #fff;
+}
+.latif-footer .brand-card {
+  display: flex;
+  flex-direction: column;
+}
+.latif-footer .logo {
+  font-size: 61px;
+  font-weight: 800;
+  letter-spacing: -.07em;
+}
+.latif-footer .logo span { color: #ff4b22; }
+.latif-footer .brand-card p {
+  margin-top: 25px;
+  max-width: 330px;
+  color: #b9b9b9;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.latif-footer .socials {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+.latif-footer .socials a {
+  width: 47px;
+  height: 47px;
+  border: 1px solid #4a4d4d;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  transition: .3s;
+  color: #fff;
+}
+.latif-footer .socials a:hover {
+  background: #fff;
+  color: #111;
+}
+.latif-footer .links h3 {
+  font-size: 17px;
+  margin-bottom: 42px;
+  color: #fff;
+}
+.latif-footer .links ul {
+  list-style: none;
+  display: grid;
+  gap: 23px;
+}
+.latif-footer .links li a {
+  display: flex;
+  justify-content: space-between;
+  color: #d0d0d0;
+  font-size: 14px;
+  transition: .3s;
+}
+.latif-footer .links li a:hover {
+  color: #fff;
+  transform: translateX(3px);
+}
+.latif-footer .links li a span { color: #999; }
+.latif-footer .newsletter {
+  position: relative;
+  overflow: hidden;
+}
+.latif-footer .newsletter::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -100px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b24, #9e1028);
+  opacity: .85;
+  filter: blur(2px);
+}
+.latif-footer .newsletter small {
+  position: relative;
+  z-index: 2;
+  letter-spacing: .22em;
+  font-size: 11px;
+  color: #bbb;
+}
+.latif-footer .newsletter h2 {
+  position: relative;
+  z-index: 2;
+  margin-top: 35px;
+  max-width: 300px;
+  font-size: 31px;
+  line-height: 1;
+  letter-spacing: -.045em;
+  color: #fff;
+}
+.latif-footer .newsletter p {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.latif-footer .email {
+  position: absolute;
+  z-index: 3;
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+  height: 58px;
+  border: 1px solid #555;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  color: #aaa;
+  font-size: 13px;
+}
+.latif-footer .email button {
+  width: 46px;
+  height: 46px;
+  margin-right: 5px;
+  border: 0;
+  border-radius: 50%;
+  background: #ff4a25;
+  color: #111;
+  font-size: 21px;
+  cursor: pointer;
+}
+.latif-footer .bottom {
+  margin-top: 15px;
+  min-height: 90px;
+  padding: 0 35px;
+  border: 1px solid #292c2c;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #aaa;
+  font-size: 12px;
+}
+.latif-footer .bottom-links {
+  display: flex;
+  gap: 25px;
+}
+.latif-footer .bottom-links a:hover { color: #fff; }
+.latif-footer .heart {
+  color: #ff4a25;
+  font-size: 17px;
+  margin: 0 5px;
+}
+@media (max-width: 1100px) {
+  .latif-footer .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .latif-footer .brand-card { grid-column: span 2; }
+  .latif-footer .newsletter { grid-column: span 2; }
+  .latif-footer .card { min-height: 300px; }
+}
+@media (max-width: 650px) {
+  .latif-footer { padding: 0 10px; }
+  .latif-footer .cta {
+    min-height: 520px;
+    padding: 28px;
+  }
+  .latif-footer .cta-label { margin-bottom: 50px; }
+  .latif-footer .cta h1 { font-size: 54px; }
+  .latif-footer .cta p { font-size: 15px; }
+  .latif-footer .cta::after { width: 90%; right: -30%; }
+  .latif-footer .bento { grid-template-columns: 1fr; gap: 10px; }
+  .latif-footer .brand-card,
+  .latif-footer .newsletter { grid-column: auto; }
+  .latif-footer .card { min-height: 290px; padding: 28px; }
+  .latif-footer .bottom { padding: 25px; flex-direction: column; align-items: flex-start; }
+  .latif-footer .bottom-links { flex-wrap: wrap; gap: 12px; }
+}
+</style>
+</head>
+
+<body>
+<div class="site-nav-wrapper">
+  <header class="site-nav">
+    <a class="logo" href="latif%20hero%20page.html" aria-label="Latif"><img src="latif%20logo.png" alt="Latif logo" style="display:block;width:180px;height:auto;"></a>
+    <nav class="navlinks">
+      <a href="latif%20hero%20page.html">Home</a>
+      <a href="latif_projects_bento.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="latif_services_bento(1).html">Services</a>
+      <a href="latif_blog_bento(1).html">Blog</a>
+    </nav>
+    <div class="navright">
+      <div class="dots"><span></span><span></span><span></span><span></span></div>
+      <a class="contact-btn" href="#message">CONTACT US <span class="btn-arrow">→</span></a>
+    </div>
+  </header>
+</div>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="kicker">Get In Touch</div>
+    <h1>Contact<br>Us</h1>
+    <p class="hero-text">
+      Let’s build something meaningful. Tell us about your project and we’ll
+      get back to you as soon as possible.
+    </p>
+    <a href="#message" class="pill">Start A Conversation <span>↗</span></a>
+  </div>
+
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=90" alt="Latif studio">
+    <div class="hero-label">STRATEGY<br>DESIGN<br>TECHNOLOGY</div>
+    <div class="hero-note">
+      <div class="symbol">◯◯</div>
+      <p>Ideas<br>Into<br>Real Results</p>
+      <b>↗</b>
+    </div>
+  </div>
+</section>
+
+<section class="contact-grid" id="message">
+
+  <div class="contact-cards">
+    <a class="info-card dark" href="mailto:hello@latif.studio">
+      <div class="info-icon">✉</div>
+      <div><h3>Email Us</h3><p>hello@latif.studio<br>We typically reply within 24 hours.</p></div>
+      <div class="info-arrow">↗</div>
+    </a>
+
+    <a class="info-card" href="tel:+919876543210">
+      <div class="info-icon">⌕</div>
+      <div><h3>Call Us</h3><p>+91 98765 43210<br>Mon - Sat, 10AM - 7PM</p></div>
+      <div class="info-arrow">↗</div>
+    </a>
+
+    <div class="info-card dark">
+      <div class="info-icon">⌖</div>
+      <div><h3>Our Location</h3><p>Pune, Maharashtra, India<br>Available for remote work worldwide.</p></div>
+      <div class="info-arrow">↗</div>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <div class="form-head">
+      <div>
+        <div class="kicker" style="color:#aaa">Send Us A Message</div>
+        <h2 class="form-title">Tell Us About<br>Your Project</h2>
+      </div>
+      <p class="form-intro">
+        Whether you have a question, a project idea, or just want to say hello —
+        we’d love to hear from you.
+      </p>
+    </div>
+
+    <form id="contactForm">
+      <div class="form-grid">
+        <label class="field"><input required name="name" placeholder="Your Name *"></label>
+        <label class="field"><input required type="email" name="email" placeholder="Your Email *"></label>
+        <label class="field"><input type="tel" name="phone" placeholder="Phone Number"></label>
+        <label class="field">
+          <select name="project">
+            <option value="">Project Type</option>
+            <option>Website</option><option>Branding</option><option>Marketing</option>
+            <option>SEO</option><option>Social Media</option><option>Custom Solution</option>
+          </select>
+        </label>
+        <label class="field"><input name="budget" placeholder="Budget Range"></label>
+        <label class="field">
+          <select name="source">
+            <option value="">How did you hear about us?</option>
+            <option>Instagram</option><option>Google</option><option>Referral</option><option>Other</option>
+          </select>
+        </label>
+        <label class="field field-wide">
+          <textarea required name="message" placeholder="Your Message *&#10;Tell us more about your project..."></textarea>
+        </label>
+      </div>
+      <div class="form-bottom">
+        <button class="send" type="submit">Send Message <span>↗</span></button>
+        <div class="safe">🔒 Your information is safe with us.<br>We never share your data.</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="meeting">
+  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=90" alt="Latif studio exterior">
+  <div class="meeting-content">
+    <div class="kicker">Let’s Meet</div>
+    <h2>Let’s Build<br>Something<br>Meaningful</h2>
+    <p>We’re based in Pune, but we work with clients worldwide. Feel free to drop by or schedule a meeting.</p>
+    <a class="pill" href="#message">Book A Meeting <span>↗</span></a>
+  </div>
+</section>
+
+<section class="quick">
+  <a href="#message" class="quick-card">
+    <div class="quick-icon">♧</div><div class="arrow">↗</div>
+    <h3>Project Inquiry</h3><p>Have a project in mind? Let’s discuss how we can bring it to life.</p>
+  </a>
+  <a href="#message" class="quick-card">
+    <div class="quick-icon">♧</div><div class="arrow">↗</div>
+    <h3>Partnerships</h3><p>Looking to collaborate? We’re always open to new opportunities.</p>
+  </a>
+  <a href="#message" class="quick-card">
+    <div class="quick-icon">▤</div><div class="arrow">↗</div>
+    <h3>Media & Press</h3><p>For media inquiries and press-related questions.</p>
+  </a>
+  <a href="#message" class="quick-card">
+    <div class="quick-icon">▣</div><div class="arrow">↗</div>
+    <h3>Careers</h3><p>Want to join our team? Check out our current openings.</p>
+  </a>
+</section>
+
+<section class="social">
+  <div class="social-copy">
+    <div class="kicker" style="color:#aaa">Stay Connected</div>
+    <h2>Follow Our Journey</h2>
+    <p>Get the latest updates, behind the scenes, and insights from our studio.</p>
+  </div>
+  <div class="social-links">
+    <a class="social-link" href="#" aria-label="Instagram">◎</a>
+    <a class="social-link" href="#" aria-label="LinkedIn">in</a>
+    <a class="social-link" href="#" aria-label="Dribbble">◉</a>
+    <a class="social-link" href="#" aria-label="Behance">Bē</a>
+    <a class="social-link" href="#" aria-label="YouTube">▶</a>
+  </div>
+</section>
+
+</main>
+
+<div class="latif-footer">
+<footer class="footer">
+  <section class="cta">
+    <div class="cta-label">LET'S WORK TOGETHER</div>
+    <h1>Have a project<br>in mind?</h1>
+    <p>
+      Let’s create something meaningful together.<br>
+      We’re always open to new opportunities.
+    </p>
+    <a class="touch" href="#message">
+      Get in Touch
+      <span>→</span>
+    </a>
+  </section>
+
+  <section class="bento">
+    <div class="card brand-card">
+      <div class="logo">Latif<span>.</span></div>
+      <p>
+        An independent digital studio crafting
+        meaningful brand experiences through
+        strategy, design, and technology.
+      </p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Dribbble">dr</a>
+        <a href="#" aria-label="Behance">be</a>
+        <a href="#" aria-label="YouTube">yt</a>
+      </div>
+    </div>
+
+    <div class="card links">
+      <h3>Pages ↗</h3>
+      <ul>
+        <li><a href="hero page latif.html">Home <span>↗</span></a></li>
+        <li><a href="about.html">About <span>↗</span></a></li>
+        <li><a href="latif_projects_bento.html">Projects <span>↗</span></a></li>
+        <li><a href="latif_services_bento(1).html">Services <span>↗</span></a></li>
+        <li><a href="latif_blog_bento(1).html">Blog <span>↗</span></a></li>
+        <li><a href="#message">Contact <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card links">
+      <h3>Services ↗</h3>
+      <ul>
+        <li><a href="latif_services_bento(1).html">Web Design <span>↗</span></a></li>
+        <li><a href="latif_services_bento(1).html">Web Development <span>↗</span></a></li>
+        <li><a href="latif_services_bento(1).html">SEO <span>↗</span></a></li>
+        <li><a href="latif_services_bento(1).html">Social Media <span>↗</span></a></li>
+        <li><a href="latif_services_bento(1).html">Branding <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card links">
+      <h3>Resources ↗</h3>
+      <ul>
+        <li><a href="latif_blog_bento(1).html">Blog <span>↗</span></a></li>
+        <li><a href="latif_projects_bento.html">Case Studies <span>↗</span></a></li>
+        <li><a href="#privacy">Privacy Policy <span>↗</span></a></li>
+        <li><a href="#terms">Terms <span>↗</span></a></li>
+        <li><a href="#faqs">FAQs <span>↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="card newsletter">
+      <small>STAY UPDATED</small>
+      <h2>Get the latest insights &amp; updates</h2>
+      <p>
+        Subscribe to our newsletter and
+        never miss an update.
+      </p>
+      <form class="email" onsubmit="subscribe(event)">
+        <span>Enter your email</span>
+        <button>→</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="bottom">
+    <div>© 2024 Latif. All rights reserved.</div>
+    <div class="bottom-links">
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms of Service</a>
+      <a href="#faqs">FAQs</a>
+    </div>
+    <div>
+      Designed and Developed with
+      <span class="heart">♥</span>
+      by Latif
+    </div>
+  </div>
+</footer>
+
+<script>
+function subscribe(event){
+  event.preventDefault();
+  event.currentTarget.querySelector("span").textContent =
+    "Thanks for subscribing!";
+}
+</script>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const button = this.querySelector(".send");
+  const old = button.innerHTML;
+  button.innerHTML = "Message Sent ✓";
+  button.disabled = true;
+  setTimeout(() => {
+    button.innerHTML = old;
+    button.disabled = false;
+    this.reset();
+  }, 2500);
+});
+</script>
+</body>
+</html>
