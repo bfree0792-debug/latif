@@ -2,13 +2,13 @@
   "name": "latif",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/naushadshaikh94626-arch/latif#readme",
+  "homepage": "https://github.com/bfree0792-debug/latif#readme",
   "bugs": {
-    "url": "https://github.com/naushadshaikh94626-arch/latif/issues"
+    "url": "https://github.com/bfree0792-debug/latif/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/naushadshaikh94626-arch/latif.git"
+    "url": "git+https://github.com/bfree0792-debug/latif.git"
   },
   "license": "ISC",
   "author": "",
