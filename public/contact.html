@@ -664,9 +664,9 @@ img{width:100%;height:100%;object-fit:cover;display:block}
 <section class="contact-grid" id="message">
 
   <div class="contact-cards">
-    <a class="info-card dark" href="mailto:latifsofttect@gmail.com">
+    <a class="info-card dark" href="mailto:latifsofttech@gmail.com">
       <div class="info-icon">✉</div>
-      <div><h3>Email Us</h3><p>latifsofttect@gmail.com<br>We typically reply within 24 hours.</p></div>
+      <div><h3>Email Us</h3><p>latifsofttech@gmail.com<br>We typically reply within 24 hours.</p></div>
       <div class="info-arrow">↗</div>
     </a>
 
@@ -695,7 +695,11 @@ img{width:100%;height:100%;object-fit:cover;display:block}
       </p>
     </div>
 
-    <form id="contactForm">
+    <form id="contactForm" action="https://formsubmit.co/latifsofttech@gmail.com" method="POST">
+      <!-- FormSubmit configuration -->
+      <input type="hidden" name="_subject" value="New Project Inquiry - Latif Studio">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
       <div class="form-grid">
         <label class="field"><input required name="name" placeholder="Your Name *"></label>
         <label class="field"><input required type="email" name="email" placeholder="Your Email *"></label>
@@ -877,17 +881,39 @@ function subscribe(event){
 </div>
 
 <script>
-document.getElementById("contactForm").addEventListener("submit", function(e){
+document.getElementById("contactForm").addEventListener("submit", async function(e){
   e.preventDefault();
-  const button = this.querySelector(".send");
-  const old = button.innerHTML;
-  button.innerHTML = "Message Sent ✓";
+  const form = this;
+  const button = form.querySelector(".send");
+  const originalHtml = button.innerHTML;
+
+  button.innerHTML = 'Sending... <span style="font-size:16px">⏳</span>';
   button.disabled = true;
+
+  try {
+    const formData = new FormData(form);
+    const response = await fetch("https://formsubmit.co/ajax/latifsofttech@gmail.com", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json"
+      },
+      body: formData
+    });
+
+    if (response.ok) {
+      button.innerHTML = 'Message Sent ✓';
+      form.reset();
+    } else {
+      button.innerHTML = 'Failed to Send. Try again';
+    }
+  } catch (err) {
+    button.innerHTML = 'Failed to Send. Try again';
+  }
+
   setTimeout(() => {
-    button.innerHTML = old;
+    button.innerHTML = originalHtml;
     button.disabled = false;
-    this.reset();
-  }, 2500);
+  }, 4000);
 });
 </script>
 </body>
