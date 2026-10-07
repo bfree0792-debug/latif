@@ -900,20 +900,29 @@ document.getElementById("contactForm").addEventListener("submit", async function
       body: formData
     });
 
-    if (response.ok) {
+    const result = await response.json().catch(() => ({}));
+
+    if (response.ok && (result.success === "true" || result.success === true)) {
       button.innerHTML = 'Message Sent ✓';
       form.reset();
+    } else if (result.message && result.message.toLowerCase().includes("activation")) {
+      button.innerHTML = 'Check Gmail to Activate!';
+      alert("FormSubmit sent an activation email to latifsofttech@gmail.com. Please open that email and click 'Activate Form' once. After that, forms will submit immediately!");
     } else {
-      button.innerHTML = 'Failed to Send. Try again';
+      // If AJAX is blocked (e.g. running from local file://), fallback to standard form submit
+      form.submit();
+      return;
     }
   } catch (err) {
-    button.innerHTML = 'Failed to Send. Try again';
+    // Fallback directly to normal form post
+    form.submit();
+    return;
   }
 
   setTimeout(() => {
     button.innerHTML = originalHtml;
     button.disabled = false;
-  }, 4000);
+  }, 5000);
 });
 </script>
 </body>

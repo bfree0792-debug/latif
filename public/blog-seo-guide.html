@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Beginner's Guide to SEO for Modern Websites - Latif Blog</title>
+<meta name="description" content="Master SEO in 2026. Learn how modern semantic search engines, AI Overviews, technical Core Web Vitals, and intent-driven content structure drive sustainable search traffic.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#f5f4ef;color:#111;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{width:100%;height:100%;object-fit:cover;display:block}
+.wrap{width:min(1440px,94vw);margin:auto}
+.kicker{display:flex;align-items:center;gap:15px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#333}
+.kicker:before{content:'';width:55px;height:1px;background:#555}
+
+/* NAV */
+.site-nav-wrapper{width:100%;padding:18px 22px 0;box-sizing:border-box}
+.site-nav{max-width:1440px;margin:0 auto;height:58px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+.site-nav .navlinks{display:flex;align-items:center;gap:38px;padding:17px 42px;border:1px solid #d8d8d5;border-radius:28px;font-size:14px;background:rgba(255,255,255,.65);backdrop-filter:blur(8px)}
+.site-nav .navlinks a{text-decoration:none;color:#555;transition:color 0.2s}
+.site-nav .navlinks a:hover,.site-nav .navlinks a.active{color:#000;font-weight:600}
+.site-nav .navright{display:flex;justify-content:flex-end;align-items:center;gap:28px}
+.site-nav .dots{width:42px;height:30px;position:relative}
+.site-nav .dots span{position:absolute;width:9px;height:9px;background:#111;border-radius:50%}
+.site-nav .dots span:nth-child(1){left:4px;top:2px}
+.site-nav .dots span:nth-child(2){left:18px;top:2px}
+.site-nav .dots span:nth-child(3){left:11px;top:15px}
+.site-nav .dots span:nth-child(4){left:25px;top:15px}
+.site-nav .contact-btn{background:#090909;color:#fff;border-radius:17px;padding:17px 26px;min-width:255px;display:flex;justify-content:space-between;align-items:center;font-size:14px;text-decoration:none;transition:background .2s,transform .2s}
+.site-nav .contact-btn:hover{background:#222;transform:translateY(-1px)}
+.site-nav .btn-arrow{font-size:25px;line-height:0}
+
+/* HERO */
+.article-hero{padding:36px 0 0}
+.article-meta{display:flex;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.article-tag{background:#111;color:#fff;border-radius:999px;padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.article-date,.article-read-time{font-size:12px;color:#777;letter-spacing:.08em}
+.article-read-time{padding-left:16px;border-left:1px solid #ccc}
+.article-title{font-size:clamp(52px,7.5vw,108px);line-height:.82;letter-spacing:-.07em;font-weight:900;margin-bottom:28px;max-width:1150px}
+.article-title em{font-style:normal;color:#ff4b22}
+.article-intro{font-size:19px;line-height:1.55;color:#444;max-width:720px;margin-bottom:40px}
+.hero-cover{width:100%;height:490px;border-radius:22px;overflow:hidden;position:relative}
+.hero-cover img{filter:saturate(.75);transition:.6s ease;width:100%;height:100%;object-fit:cover}
+.hero-cover:hover img{transform:scale(1.03)}
+.hero-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.65))}
+.hero-overlay{position:absolute;z-index:2;bottom:36px;left:36px;right:36px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff}
+.big-stat{font-size:clamp(60px,9vw,130px);font-weight:900;line-height:.82;letter-spacing:-.08em;opacity:.9}
+.big-stat span{display:block;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-top:8px}
+.hero-quote{max-width:340px;text-align:right;font-size:15px;line-height:1.5;color:rgba(255,255,255,.85)}
+
+/* AUTHOR */
+.author-bar{display:flex;align-items:center;gap:16px;border-top:1px solid rgba(0,0,0,.08);padding-top:28px;margin-bottom:32px}
+.author-av{width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#111}
+.author-av img{width:100%;height:100%;object-fit:cover;filter:saturate(.8)}
+.author-name{font-size:15px;font-weight:700}
+.author-role{font-size:12px;color:#888;margin-top:2px}
+.author-right{margin-left:auto}
+.share-btn{border:1px solid #ddd;border-radius:999px;padding:10px 20px;font-size:11px;font-weight:600;letter-spacing:.06em;cursor:pointer;background:none;transition:.3s}
+.share-btn:hover{background:#111;color:#fff;border-color:#111}
+
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:10px;font-size:12px;color:#888;margin-bottom:32px;flex-wrap:wrap}
+.breadcrumb a{color:#888;transition:color .2s}
+.breadcrumb a:hover{color:#111}
+
+/* BENTO */
+.bento-section{padding:20px 0 60px}
+.bento-label{display:flex;justify-content:space-between;align-items:center;margin:0 4px 18px}
+.bento-label .right{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#888}
+.r1{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:16px;margin-bottom:16px}
+.r2{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:16px}
+.r3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
+.r4{display:grid;grid-template-columns:1fr;margin-bottom:16px}
+.r5{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-bottom:16px}
+
+/* CARDS */
+.bc{border-radius:20px;overflow:hidden;position:relative;transition:transform .3s,box-shadow .3s}
+.bc:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.bc-dark{background:#111313;color:#fff}
+.bc-light{background:#ebe9e3;color:#111}
+.bc-cream{background:#f0ede5;color:#111}
+.bc-orange{background:#ff4b22;color:#fff}
+.bc-deep{background:#0a0a0a;color:#fff}
+.bc-white{background:#fff;color:#111;border:1px solid #e8e5df}
+.p32{padding:32px}
+.p42{padding:42px}
+
+/* STAT */
+.stat-card{display:flex;flex-direction:column;justify-content:space-between;min-height:220px}
+.stat-num{font-size:clamp(58px,6vw,88px);font-weight:900;line-height:.82;letter-spacing:-.07em;margin-top:auto}
+.stat-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-top:12px}
+.stat-desc{font-size:13px;line-height:1.5;opacity:.75;margin-top:8px}
+
+/* SECTION HEAD */
+.sh{min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+.sh-num{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.5}
+.sh-title{font-size:clamp(28px,3vw,44px);font-weight:800;line-height:.95;letter-spacing:-.05em;margin-top:16px}
+.sh-title em{font-style:normal;color:#ff4b22}
+.sh-body{font-size:14px;line-height:1.6;opacity:.72;margin-top:14px;max-width:440px}
+
+/* IMAGE CARD */
+.img-card{min-height:240px;background:#111;position:relative;overflow:hidden}
+.img-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.7);transition:.5s}
+.img-card:hover img{transform:scale(1.06)}
+.img-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.75))}
+.img-label{position:absolute;z-index:2;bottom:24px;left:24px;right:24px;color:#fff}
+.img-pill{display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:6px 13px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+
+/* QUOTE */
+.qmark{font-size:80px;font-weight:900;line-height:.7;opacity:.15;margin-bottom:8px}
+.qtext{font-size:clamp(18px,2vw,25px);font-weight:700;line-height:1.25;letter-spacing:-.04em}
+.qauthor{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:20px}
+
+/* PILLARS & MATRICES */
+.pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.pillar-box{background:rgba(0,0,0,.04);border-radius:14px;padding:20px}
+.bc-dark .pillar-box{background:rgba(255,255,255,.05)}
+.pillar-num{font-size:11px;font-weight:800;letter-spacing:.1em;color:#ff4b22;margin-bottom:8px;text-transform:uppercase}
+.pillar-title{font-size:16px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.pillar-desc{font-size:12px;line-height:1.55;opacity:.75}
+
+.tip-list{list-style:none;display:grid;gap:16px;margin-top:20px}
+.tip-list li{display:flex;gap:14px;align-items:flex-start;font-size:14px;line-height:1.5}
+.tip-list li .num{width:28px;height:28px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px}
+.bc-dark .tip-list li{color:#ccc}
+.bc-dark .tip-list li .num{background:#fff;color:#111}
+
+.chk{list-style:none;display:grid;gap:12px;margin-top:18px}
+.chk li{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;opacity:.85}
+.chk li::before{content:'\2713';font-weight:900;font-size:12px;margin-top:2px;flex-shrink:0}
+.bc-dark .chk li::before{color:#ff4b22}
+.bc-orange .chk li::before{color:rgba(255,255,255,.9);opacity:1}
+.bc-cream .chk li::before{color:#111}
+.bc-white .chk li::before{color:#ff4b22}
+
+/* TIMELINE */
+.tl{list-style:none;display:grid;gap:0;margin-top:20px;position:relative}
+.tl::before{content:'';position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:rgba(0,0,0,.1)}
+.tl li{display:flex;gap:18px;align-items:flex-start;padding:0 0 20px 0;font-size:13px;line-height:1.5}
+.tl li:last-child{padding-bottom:0}
+.tl-dot{width:30px;height:30px;border-radius:50%;border:2px solid #ff4b22;background:#fff;color:#ff4b22;display:grid;place-items:center;font-size:9px;font-weight:800;flex-shrink:0;z-index:1;position:relative}
+.tl-h{font-size:13px;font-weight:700;margin-bottom:3px}
+.tl-p{font-size:12px;opacity:.65}
+
+/* METRICS */
+.metric-row{display:flex;border-top:1px solid rgba(0,0,0,.08);margin-top:24px;padding-top:20px}
+.bc-dark .metric-row{border-top-color:rgba(255,255,255,.1)}
+.mi{flex:1;text-align:center}
+.mi+.mi{border-left:1px solid rgba(0,0,0,.08)}
+.bc-dark .mi+.mi{border-left-color:rgba(255,255,255,.1)}
+.mn{font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-.06em;line-height:1}
+.mu{font-size:10px;opacity:.55;margin-top:6px;letter-spacing:.04em;text-transform:uppercase;line-height:1.4}
+
+/* MISC */
+.icon-b{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:24px;margin-bottom:20px;background:rgba(0,0,0,.06)}
+.bc-dark .icon-b{background:rgba(255,255,255,.08)}
+.bc-orange .icon-b{background:rgba(255,255,255,.2)}
+.wide-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.wide-visual{height:280px;border-radius:14px;overflow:hidden;position:relative;background:#1a1a1a}
+.wide-visual img{filter:saturate(.7);width:100%;height:100%;object-fit:cover}
+.wide-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,75,34,.3),transparent)}
+.bar-chart{display:flex;align-items:flex-end;gap:10px;height:100px;margin-top:20px;margin-bottom:36px}
+.bar{flex:1;border-radius:6px 6px 0 0;background:rgba(0,0,0,.06);position:relative}
+.bar-fill{position:absolute;bottom:0;left:0;right:0;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#ff4b22,#ff8562)}
+.bar-lbl{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font-size:8px;opacity:.55;white-space:nowrap;text-align:center;text-transform:uppercase;letter-spacing:.04em}
+.ptags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.ptag{border-radius:999px;padding:8px 16px;font-size:11px;font-weight:600;letter-spacing:.04em}
+.po{border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85)}
+.ps{background:#ff4b22;color:#fff}
+.grad{height:6px;width:100%;border-radius:3px;margin-bottom:24px;background:linear-gradient(90deg,#ff4b22,#ff8562,#ffc107,#4caf50,#2196f3)}
+
+/* CTA CARD */
+.art-cta{min-height:280px;background:#0a0a0a;border-radius:20px;padding:48px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;margin-top:16px}
+.art-cta::after{content:'';position:absolute;right:-8%;top:-40%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,75,34,.35),transparent 70%);pointer-events:none}
+.cta-title{font-size:clamp(36px,4vw,60px);font-weight:900;letter-spacing:-.07em;line-height:.88;max-width:620px;position:relative;z-index:2}
+.cta-sub{font-size:15px;color:#aaa;margin-top:16px;max-width:500px;line-height:1.55;position:relative;z-index:2}
+.cta-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;position:relative;z-index:2}
+.btn-p{background:#ff4b22;color:#fff;border-radius:999px;padding:16px 32px;font-size:13px;font-weight:700;letter-spacing:.06em;transition:.3s;display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+.btn-p:hover{background:#e03c15;transform:translateY(-2px)}
+.btn-s{border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;padding:16px 32px;font-size:13px;font-weight:600;letter-spacing:.06em;transition:.3s;display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+.btn-s:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+
+/* FOOTER */
+.latif-footer{width:100%;max-width:1500px;margin:60px auto 30px;padding:0 20px;box-sizing:border-box}
+.latif-footer *{box-sizing:border-box;margin:0;padding:0}
+.latif-footer a{text-decoration:none;color:inherit}
+.f-cta{position:relative;min-height:420px;overflow:hidden;border-radius:22px;background:#f4f0ea;color:#0b0b0b;padding:55px;display:flex;flex-direction:column;justify-content:flex-start}
+.f-cta::after{content:'';position:absolute;right:-5%;top:-20%;width:68%;height:150%;background:radial-gradient(ellipse at 48% 56%,transparent 0 25%,#ef762f 26% 35%,transparent 36%),radial-gradient(ellipse at 76% 35%,transparent 0 27%,#d91d1d 28% 39%,transparent 40%),linear-gradient(125deg,transparent 38%,#f7a15b 39% 49%,#f04b31 50% 60%,#9c1017 61% 76%,transparent 77%);transform:rotate(-7deg)}
+.f-cta-lbl{position:relative;z-index:2;display:flex;align-items:center;gap:15px;font-size:12px;letter-spacing:.22em;color:#555;margin-bottom:45px}
+.f-cta-lbl::before{content:'';width:60px;height:1px;background:#777}
+.f-cta h1{position:relative;z-index:2;max-width:700px;font-size:clamp(55px,7vw,98px);line-height:.88;letter-spacing:-.065em;font-weight:800}
+.f-cta p{position:relative;z-index:2;margin-top:25px;max-width:520px;color:#777;font-size:18px;line-height:1.45}
+.f-touch{position:relative;z-index:3;margin-top:24px;width:max-content;padding:8px 9px 8px 25px;border-radius:50px;background:#080808;color:#fff;display:flex;align-items:center;gap:28px;font-weight:700;font-size:14px;transition:transform .2s;text-decoration:none}
+.f-touch:hover{transform:translateY(-2px)}
+.f-touch span{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#111;font-size:21px}
+.f-bento{margin-top:15px;display:grid;grid-template-columns:1.35fr .7fr .7fr .7fr 1fr;gap:15px}
+.f-card{min-height:345px;border:1px solid #292c2c;border-radius:20px;background:#111313;padding:35px;color:#fff}
+.f-brand{display:flex;flex-direction:column}
+.f-logo{font-size:61px;font-weight:800;letter-spacing:-.07em}
+.f-logo span{color:#ff4b22}
+.f-brand p{margin-top:25px;max-width:330px;color:#b9b9b9;font-size:15px;line-height:1.55}
+.f-socials{margin-top:auto;display:flex;gap:10px}
+.f-socials a{width:47px;height:47px;border:1px solid #4a4d4d;border-radius:50%;display:grid;place-items:center;font-size:13px;transition:.3s;color:#fff}
+.f-socials a:hover{background:#fff;color:#111}
+.f-links h3{font-size:17px;margin-bottom:42px;color:#fff}
+.f-links ul{list-style:none;display:grid;gap:23px}
+.f-links li a{display:flex;justify-content:space-between;color:#d0d0d0;font-size:14px;transition:.3s}
+.f-links li a:hover{color:#fff;transform:translateX(3px)}
+.f-links li a span{color:#999}
+.f-nl{position:relative;overflow:hidden}
+.f-nl::after{content:'';position:absolute;right:-80px;top:-100px;width:260px;height:260px;border-radius:50%;background:linear-gradient(135deg,#ff6b24,#9e1028);opacity:.85;filter:blur(2px)}
+.f-nl small{position:relative;z-index:2;letter-spacing:.22em;font-size:11px;color:#bbb}
+.f-nl h2{position:relative;z-index:2;margin-top:35px;max-width:300px;font-size:31px;line-height:1;letter-spacing:-.045em;color:#fff}
+.f-nl p{position:relative;z-index:2;margin-top:20px;color:#aaa;font-size:14px;line-height:1.5}
+.f-email{position:absolute;z-index:3;left:28px;right:28px;bottom:28px;height:58px;border:1px solid #555;border-radius:50px;display:flex;align-items:center;justify-content:space-between;padding-left:20px;color:#aaa;font-size:13px}
+.f-email button{width:46px;height:46px;margin-right:5px;border:0;border-radius:50%;background:#ff4a25;color:#111;font-size:21px;cursor:pointer}
+.f-bottom{margin-top:15px;min-height:90px;padding:0 35px;border:1px solid #292c2c;border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#aaa;font-size:12px}
+.f-bottom-links{display:flex;gap:25px}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .site-nav{grid-template-columns:1fr auto}
+  .site-nav .navlinks{display:none}
+  .site-nav .navright{grid-column:2}
+  .site-nav .contact-btn{min-width:150px}
+  .r1{grid-template-columns:1fr 1fr}
+  .r2,.r5{grid-template-columns:1fr}
+  .r3{grid-template-columns:1fr 1fr}
+  .pillar-grid{grid-template-columns:1fr}
+  .wide-inner{grid-template-columns:1fr}
+  .wide-visual{height:200px}
+  .f-bento{grid-template-columns:repeat(2,1fr)}
+  .f-brand{grid-column:span 2}
+  .f-nl{grid-column:span 2}
+  .f-card{min-height:300px}
+}
+@media(max-width:620px){
+  .site-nav-wrapper{padding:12px 14px 0}
+  .site-nav .dots{display:none}
+  .site-nav .contact-btn{min-width:auto;padding:13px 16px}
+  .wrap{width:92vw}
+  .article-title{font-size:52px}
+  .hero-cover{height:300px}
+  .r1,.r2,.r3,.r4,.r5{grid-template-columns:1fr}
+  .hero-overlay{flex-direction:column;align-items:flex-start;gap:12px}
+  .hero-quote{text-align:left}
+  .f-bento{grid-template-columns:1fr;gap:10px}
+  .f-brand,.f-nl{grid-column:auto}
+  .f-card{min-height:290px;padding:28px}
+  .f-bottom{padding:25px;flex-direction:column;align-items:flex-start}
+  .f-bottom-links{flex-wrap:wrap;gap:12px}
+  .f-cta{min-height:520px;padding:28px}
+  .f-cta h1{font-size:54px}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.bc{animation:fadeUp .55s ease both}
+.r1 .bc:nth-child(1){animation-delay:.05s}
+.r1 .bc:nth-child(2){animation-delay:.12s}
+.r1 .bc:nth-child(3){animation-delay:.19s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="site-nav-wrapper">
+  <header class="site-nav">
+    <a href="/" aria-label="Latif"><img src="/images/latif logo.png" alt="Latif logo" style="display:block;width:180px;height:auto;"></a>
+    <nav class="navlinks">
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/blog" class="active">Blog</a>
+    </nav>
+    <div class="navright">
+      <div class="dots"><span></span><span></span><span></span><span></span></div>
+      <a class="contact-btn" href="/contact">CONTACT US <span class="btn-arrow">&#8594;</span></a>
+    </div>
+  </header>
+</div>
+
+<main class="wrap">
+
+  <!-- ARTICLE HERO -->
+  <section class="article-hero">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/blog">Blog</a>
+      <span style="opacity:.4">&#8250;</span>
+      <a href="#">SEO</a>
+      <span style="opacity:.4">&#8250;</span>
+      <span style="color:#111">Modern SEO Guide</span>
+    </nav>
+
+    <div class="article-meta">
+      <span class="article-tag">SEO</span>
+      <span class="article-date">October 05, 2026</span>
+      <span class="article-read-time">&#9201; 8 min read</span>
+    </div>
+
+    <h1 class="article-title">A Beginner's Guide<br>to <em>Modern SEO</em><br>for Websites</h1>
+    <p class="article-intro">Search engines no longer match strings of keywords &#8212; they understand entities, human intent, and topical authority. Here is your foundational roadmap to ranking high, capturing qualified searchers, and driving consistent organic revenue.</p>
+
+    <div class="author-bar">
+      <div class="author-av">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Abdul Latif">
+      </div>
+      <div>
+        <div class="author-name">Abdul Latif</div>
+        <div class="author-role">SEO & Organic Growth Lead</div>
+      </div>
+      <div class="author-right">
+        <button class="share-btn" id="share-article-btn" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!'">Share &#8599;</button>
+      </div>
+    </div>
+
+    <div class="hero-cover">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=90" alt="Modern SEO Guide">
+      <div class="hero-overlay">
+        <div class="big-stat">68%<span>Of all trackable online<br>experiences begin with search</span></div>
+        <div class="hero-quote">&ldquo;SEO is not about gaming Google. It is about organizing your website so thoroughly that Google looks foolish if it doesn’t rank you first.&rdquo;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENTO -->
+  <section class="bento-section">
+    <div class="bento-label">
+      <div class="kicker">Strategic Blueprint</div>
+      <span class="right">Bento Playbook</span>
+    </div>
+
+    <!-- ROW 1: THE CORE PREMISE & STATS -->
+    <div class="r1">
+      <div class="bc bc-dark p42 sh">
+        <div class="sh-num">01 &mdash; The Semantic Search Era</div>
+        <div>
+          <div class="sh-title">From Keywords<br>to <em>Entity Authority</em></div>
+          <p class="sh-body">With AI-driven search models and automated overviews, search engines analyze complete topical ecosystems. Thin, 500-word keyword-stuffed articles are dead. Deep, well-structured content that solves search intent comprehensively dominates the rankings.</p>
+          <div class="ptags">
+            <span class="ptag po">Semantic Web</span>
+            <span class="ptag po">Core Web Vitals</span>
+            <span class="ptag ps">Rankings</span>
+          </div>
+        </div>
+      </div>
+      <div class="bc bc-orange p32 stat-card">
+        <div class="icon-b">&#128269;</div>
+        <div>
+          <div class="stat-num">39.8%</div>
+          <div class="stat-label">Organic CTR for position #1 on Google</div>
+          <div class="stat-desc" style="color:rgba(255,255,255,.8)">The top result captures nearly ten times more clicks than the bottom of page one. Ranking at the top transforms customer acquisition economics.</div>
+        </div>
+      </div>
+      <div class="bc bc-cream p32 stat-card">
+        <div class="icon-b">&#9889;</div>
+        <div>
+          <div class="stat-num" style="color:#ff4b22">0.8s</div>
+          <div class="stat-label" style="color:#555">Ideal mobile page load threshold</div>
+          <div class="stat-desc" style="color:#666">Sites loading under 1 second see 3x higher conversion rates and superior crawl budget prioritization from search bots.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: THE 4 PILLARS & VISUAL CARD -->
+    <div class="r2">
+      <div class="bc bc-light p32">
+        <div class="grad"></div>
+        <div class="sh-num">02 &mdash; Architecture</div>
+        <h2 style="font-size:28px;font-weight:800;letter-spacing:-.05em;line-height:1.05;margin:12px 0 0">The 4 Pillars of Modern Technical & Semantic SEO</h2>
+        <div class="pillar-grid">
+          <div class="pillar-box">
+            <div class="pillar-num">Pillar 01</div>
+            <div class="pillar-title">Technical Foundation</div>
+            <div class="pillar-desc">Clean DOM structure, fast hosting, valid SSL, clean XML sitemaps, and seamless mobile responsiveness.</div>
+          </div>
+          <div class="pillar-box">
+            <div class="pillar-num">Pillar 02</div>
+            <div class="pillar-title">Intent-Matched Content</div>
+            <div class="pillar-desc">Direct answers to navigational, transactional, and informational user queries with zero filler text.</div>
+          </div>
+          <div class="pillar-box">
+            <div class="pillar-num">Pillar 03</div>
+            <div class="pillar-title">On-Page Architecture</div>
+            <div class="pillar-desc">Semantic HTML5 tags, proper H1-H3 hierarchy, schema.org JSON-LD microdata, and descriptive image alt tags.</div>
+          </div>
+          <div class="pillar-box">
+            <div class="pillar-num">Pillar 04</div>
+            <div class="pillar-title">Earned Authority</div>
+            <div class="pillar-desc">High-trust editorial backlinks, digital PR mentions, and primary research citations across your industry.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bc img-card" style="min-height:340px">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85" alt="Modern SEO Guide">
+        <div class="img-label">
+          <div class="img-pill">SEO Principle</div>
+          <h3 style="font-size:20px;font-weight:700;line-height:1.15;letter-spacing:-.04em">Search intent is king.<br>Satisfy the query in 5 seconds.</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: CHECKLIST + BAR CHART + QUOTE -->
+    <div class="r3">
+      <div class="bc bc-dark p32">
+        <div class="icon-b">&#9745;</div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:4px">Pre-Launch SEO Audit</h3>
+        <p style="font-size:12px;color:#888">Essential checks before pushing live</p>
+        <ul class="chk" style="margin-top:20px">
+          <li>Single H1 tag per page with primary keyword entity</li><li>Descriptive title tags under 60 characters with branding</li><li>Meta descriptions under 155 chars that drive clicks</li><li>Valid Schema.org Article / Organization JSON-LD markup</li><li>Open Graph social cards configured for previews</li><li>Images compressed with WebP format and explicit alt tags</li><li>Robots.txt allowing bot indexing with sitemap link</li><li>Zero 404 errors or broken redirect chains</li>
+        </ul>
+      </div>
+      <div class="bc bc-light p32">
+        <div class="sh-num">03 &mdash; Performance</div>
+        <h3 style="font-size:20px;font-weight:800;letter-spacing:-.04em;margin:10px 0 0">Organic CTR by Search Position</h3>
+        <p style="font-size:11px;color:#888;margin-top:10px;text-transform:uppercase;letter-spacing:.08em">Google desktop & mobile click distribution</p>
+        <div class="bar-chart">
+          <div class="bar"><div class="bar-fill" style="height:95%"></div><div class="bar-lbl">Pos 1</div></div><div class="bar"><div class="bar-fill" style="height:55%"></div><div class="bar-lbl">Pos 2</div></div><div class="bar"><div class="bar-fill" style="height:38%"></div><div class="bar-lbl">Pos 3</div></div><div class="bar"><div class="bar-fill" style="height:26%"></div><div class="bar-lbl">Pos 4</div></div><div class="bar"><div class="bar-fill" style="height:18%"></div><div class="bar-lbl">Pos 5</div></div><div class="bar"><div class="bar-fill" style="height:9%"></div><div class="bar-lbl">Pos 6+</div></div>
+        </div>
+        <div class="metric-row" style="margin-top:48px">
+          <div class="mi"><div class="mn" style="color:#ff4b22">53%</div><div class="mu">Of all website traffic<br>comes from organic search</div></div>
+          <div class="mi"><div class="mn">14.6%</div><div class="mu">Average close rate for<br>organic SEO leads vs 1.7% outbound</div></div>
+        </div>
+      </div>
+      <div class="bc bc-deep p32" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="qmark">&ldquo;</div>
+          <div class="qtext" style="color:#fff">Content builds relationships. Relationships build trust. Trust drives revenue. SEO makes sure that chain ever begins.</div>
+          <div class="qauthor" style="color:#ff4b22">&#8212; Search Marketing Axiom</div>
+        </div>
+        <div>
+          <div style="width:50px;height:1px;background:rgba(255,255,255,.15);margin:20px 0 16px"></div>
+          <div style="font-size:12px;color:#888;line-height:1.55">Optimizing for search engines and optimizing for human satisfaction are now the exact same task.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 4: 6-STEP TIMELINE WORKFLOW -->
+    <div class="r4">
+      <div class="bc bc-white p42">
+        <div class="wide-inner">
+          <div>
+            <div class="sh-num">04 &mdash; Implementation</div>
+            <h2 style="font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-.06em;line-height:1;margin:12px 0 0">The 6-Step Organic Traffic Flywheel</h2>
+            <ul class="tl">
+              <li><div class="tl-dot">01</div><div><div class="tl-h">Topical Mapping & Keyword Clustering</div><div class="tl-p">Group related searches into cluster topics rather than targeting isolated, fragmented keywords.</div></div></li><li><div class="tl-dot">02</div><div><div class="tl-h">Competitive SERP Content Analysis</div><div class="tl-p">Deconstruct what top 3 ranking pages provide, and build an asset that is 10x more complete.</div></div></li><li><div class="tl-dot">03</div><div><div class="tl-h">Semantic Writing & Structured Formatting</div><div class="tl-p">Use bullet points, comparison tables, clear definitions, and code/quote snippets for scannability.</div></div></li><li><div class="tl-dot">04</div><div><div class="tl-h">Internal Linking Architecture</div><div class="tl-p">Funnel authority from high-traffic anchor pages down into high-converting service landing pages.</div></div></li><li><div class="tl-dot">05</div><div><div class="tl-h">Schema Markup & Rich Snippet Optimization</div><div class="tl-p">Add structured data to trigger FAQ accordions, rating stars, and knowledge graph carousels.</div></div></li><li><div class="tl-dot">06</div><div><div class="tl-h">Performance Tracking & Content Refreshing</div><div class="tl-p">Update decaying rankings every 6 months to maintain competitive position and freshness signals.</div></div></li>
+            </ul>
+          </div>
+          <div class="wide-visual">
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=85" alt="Workflow">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 5: DEEP DIVE & METRICS -->
+    <div class="r5">
+      <div class="bc bc-dark p32">
+        <div class="sh-num" style="color:#888">05 &mdash; Deep Dive</div>
+        <h2 style="font-size:26px;font-weight:800;letter-spacing:-.05em;margin:12px 0 20px;color:#fff">Winning Modern Search Features</h2>
+        <p style="font-size:13px;color:#aaa;line-height:1.6;margin-bottom:24px">Google and modern AI search engines prefer concise direct answers for featured snippets and AI overviews:</p>
+        <ul class="tip-list">
+          <li><div class="num" style="background:#ff4b22;color:#fff;font-size:10px">FAQ</div><div style="color:#ccc"><strong style="color:#fff">Answer First 40 Words</strong> &#8212; Place a definitive 40-word definition directly under your H2 heading to capture position zero snippets.</div></li><li><div class="num" style="background:#3b82f6;color:#fff;font-size:10px">TBL</div><div style="color:#ccc"><strong style="color:#fff">Use Comparative Tables</strong> &#8212; Search bots extract tabular markdown data effortlessly into rich search snippets and comparison grids.</div></li><li><div class="num" style="background:#10b981;color:#fff;font-size:10px">ENT</div><div style="color:#ccc"><strong style="color:#fff">Entity Associations</strong> &#8212; Reference recognized organizations, industry standards, and author credentials to boost E-E-A-T scores.</div></li><li><div class="num" style="background:#8b5cf6;color:#fff;font-size:10px">VTL</div><div style="color:#ccc"><strong style="color:#fff">Pass Core Web Vitals</strong> &#8212; Eliminate Cumulative Layout Shift (CLS) and keep Largest Contentful Paint (LCP) under 2.5 seconds.</div></li>
+        </ul>
+      </div>
+      <div class="bc bc-cream p32" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="sh-num">06 &mdash; Metrics</div>
+          <h2 style="font-size:26px;font-weight:800;letter-spacing:-.05em;line-height:1.05;margin:12px 0 0">Essential SEO KPIs to Monitor</h2>
+          <p style="font-size:13px;color:#555;margin-top:14px;line-height:1.6">Ditch vanity ranking lists and track true growth:</p>
+          <ul class="chk" style="margin-top:18px">
+            <li><strong>Organic Click Growth</strong> &#8212; Weekly increase in real qualified site visits</li><li><strong>Query Impression Breadth</strong> &#8212; How many unique search phrases your page enters</li><li><strong>Average Position Progression</strong> &#8212; Movement from page 2 (pos 11-20) onto page 1</li><li><strong>Organic Goal Conversions</strong> &#8212; Signups, bookings, and purchases from search traffic</li><li><strong>Referring Domain Quality</strong> &#8212; Net growth in high-DA backlink profile</li>
+          </ul>
+        </div>
+        <div class="metric-row">
+          <div class="mi"><div class="mn" style="color:#ff4b22">+142%</div><div class="mu" style="color:#666">Traffic lift from ranking in<br>top 3 vs positions 4-10</div></div>
+          <div class="mi" style="border-left:1px solid rgba(0,0,0,.08)"><div class="mn" style="color:#111">0.4s</div><div class="mu" style="color:#666">Average TTFB on modern<br>edge-deployed sites</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 6: TOOLKIT + MISTAKES + TIERS -->
+    <div class="r3">
+      <div class="bc bc-white p32">
+        <div class="icon-b" style="background:#fff3f0">&#128295;</div>
+        <h3 style="font-size:18px;font-weight:800;letter-spacing:-.04em;margin-bottom:16px">Modern SEO Tool Arsenal</h3>
+        <ul class="chk">
+          <li><strong>Google Search Console</strong> &#8212; Direct search data straight from the source</li><li><strong>Ahrefs / Semrush</strong> &#8212; Competitor gap analysis & keyword research</li><li><strong>Screaming Frog</strong> &#8212; Deep technical crawl analysis & broken links</li><li><strong>SurferSEO</strong> &#8212; Real-time NLP content optimization editor</li><li><strong>PageSpeed Insights</strong> &#8212; Core Web Vitals and speed bottleneck reports</li><li><strong>Schema Markup Generator</strong> &#8212; JSON-LD structured data builder</li><li><strong>IndexNow</strong> &#8212; Instant search engine indexing protocol</li>
+        </ul>
+      </div>
+      <div class="bc bc-orange p32">
+        <div class="icon-b">&#9889;</div>
+        <h3 style="font-size:20px;font-weight:800;letter-spacing:-.04em;margin-bottom:20px">10 Common SEO Traps to Avoid</h3>
+        <ul class="chk" style="gap:10px">
+          <li>Targeting vanity keywords with zero commercial intent</li><li>Writing keyword-stuffed copy that alienates real human readers</li><li>Neglecting mobile responsive layout and touch target sizing</li><li>Allowing multiple URLs to serve identical content without canonicals</li><li>Ignoring 301 redirects during page reorganizations or rebrands</li><li>Slow, bloated JavaScript bundles delaying search bot rendering</li><li>Buying low-quality spam backlink packages that trigger penalties</li><li>Failing to link relevant internal articles together systematically</li><li>Publishing generic AI-generated articles with no unique viewpoint</li><li>Giving up after 60 days before organic indexing compounds</li>
+        </ul>
+      </div>
+      <div class="bc bc-deep p32">
+        <div class="icon-b">&#128200;</div>
+        <h3 style="font-size:18px;font-weight:800;letter-spacing:-.04em;color:#fff;margin-bottom:4px">SEO Engagement Tiers</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:20px">Investment scale by business stage</p>
+        <div style="display:grid;gap:14px">
+          
+          <div style="background:rgba(255,255,255,.05);border-radius:12px;padding:16px 18px;">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#ff4b22;margin-bottom:6px">Launch SEO Audit &#8212; $1.5K&ndash;3K</div>
+            <div style="font-size:13px;color:#ccc;line-height:1.5">Comprehensive site crawl, schema implementation, metadata revamp, Core Web Vitals optimization.</div>
+          </div>
+          <div style="background:rgba(255,75,34,.15);border-radius:12px;padding:16px 18px;border:1px solid rgba(255,75,34,.3)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#ff4b22;margin-bottom:6px">Growth Flywheel &#8212; $3K&ndash;7K/mo</div>
+            <div style="font-size:13px;color:#ccc;line-height:1.5">Weekly pillar articles, internal link architecture, technical monitoring, digital PR and backlink acquisition.</div>
+          </div>
+          <div style="background:rgba(255,255,255,.05);border-radius:12px;padding:16px 18px;">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#ff4b22;margin-bottom:6px">Enterprise Dominance &#8212; $10K+/mo</div>
+            <div style="font-size:13px;color:#ccc;line-height:1.5">Full multi-market international SEO, headless CMS architecture, ongoing content team coaching and scale.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA CARD -->
+    <div class="art-cta">
+      <div>
+        <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#ff4b22;margin-bottom:20px">Ready for Page One?</div>
+        <div class="cta-title">Let us build your<br>organic search engine<br><span style="color:#ff4b22">together.</span></div>
+        <div class="cta-sub">Stop paying for every single click. Latif architects search-engine-optimized websites and content engines that generate consistent inbound customers around the clock.</div>
+      </div>
+      <div class="cta-btns">
+        <a href="/contact" class="btn-p" id="start-project-btn">Start an SEO Project &#8594;</a>
+        <a href="/blog" class="btn-s" id="more-articles-btn">Explore All Articles &#8599;</a>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- FOOTER -->
+<div class="latif-footer">
+  <footer>
+    <section class="f-cta">
+      <div class="f-cta-lbl">LET'S WORK TOGETHER</div>
+      <h1>Have a project<br>in mind?</h1>
+      <p>We craft brands, websites, and digital experiences that make people stop and stare.</p>
+      <a class="f-touch" href="/contact">GET IN TOUCH <span>&#8594;</span></a>
+    </section>
+    <div class="f-bento">
+      <div class="f-card f-brand">
+        <div class="f-logo">LA<span>.</span></div>
+        <p>A creative studio building brands, digital products and marketing strategies that drive real-world results.</p>
+        <div class="f-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Twitter">TW</a>
+          <a href="#" aria-label="LinkedIn">LI</a>
+          <a href="#" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div class="f-card f-links">
+        <h3>Studio</h3>
+        <ul>
+          <li><a href="/about">About Us <span>&#8599;</span></a></li>
+          <li><a href="/services">Services <span>&#8599;</span></a></li>
+          <li><a href="/projects">Projects <span>&#8599;</span></a></li>
+          <li><a href="/blog">Blog <span>&#8599;</span></a></li>
+        </ul>
+      </div>
+      <div class="f-card f-links">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/services">Branding <span>&#8599;</span></a></li>
+          <li><a href="/services">Web Design <span>&#8599;</span></a></li>
+          <li><a href="/services">Video <span>&#8599;</span></a></li>
+          <li><a href="/services">Strategy <span>&#8599;</span></a></li>
+        </ul>
+      </div>
+      <div class="f-card f-links">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="/contact">Contact <span>&#8599;</span></a></li>
+          <li><a href="mailto:hello@latif.studio">Email <span>&#8599;</span></a></li>
+          <li><a href="#">Careers <span>&#8599;</span></a></li>
+          <li><a href="#">Press <span>&#8599;</span></a></li>
+        </ul>
+      </div>
+      <div class="f-card f-nl">
+        <small>NEWSLETTER</small>
+        <h2>Stay inspired weekly.</h2>
+        <p>No fluff &#8212; only the best in branding, video and digital strategy.</p>
+        <form class="f-email" onsubmit="event.preventDefault();this.querySelector('button').textContent='&#10003;'">
+          <span>Your email</span>
+          <button type="submit" aria-label="Subscribe">&#8594;</button>
+        </form>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>&copy; 2026 Latif Studio. Made with <span class="heart">&#9829;</span> for bold brands.</span>
+      <div class="f-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
